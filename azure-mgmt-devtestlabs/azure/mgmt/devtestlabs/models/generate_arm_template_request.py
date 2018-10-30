@@ -21,23 +21,16 @@ class GenerateArmTemplateRequest(Model):
     :type parameters: list[~azure.mgmt.devtestlabs.models.ParameterInfo]
     :param location: The location of the virtual machine.
     :type location: str
-    :param file_upload_options: Options for uploading the files for the
-     artifact. UploadFilesAndGenerateSasTokens is the default value. Possible
-     values include: 'UploadFilesAndGenerateSasTokens', 'None'
-    :type file_upload_options: str or
-     ~azure.mgmt.devtestlabs.models.FileUploadOptions
     """
 
     _attribute_map = {
         'virtual_machine_name': {'key': 'virtualMachineName', 'type': 'str'},
         'parameters': {'key': 'parameters', 'type': '[ParameterInfo]'},
         'location': {'key': 'location', 'type': 'str'},
-        'file_upload_options': {'key': 'fileUploadOptions', 'type': 'str'},
     }
 
-    def __init__(self, virtual_machine_name=None, parameters=None, location=None, file_upload_options=None):
-        super(GenerateArmTemplateRequest, self).__init__()
-        self.virtual_machine_name = virtual_machine_name
-        self.parameters = parameters
-        self.location = location
-        self.file_upload_options = file_upload_options
+    def __init__(self, **kwargs):
+        super(GenerateArmTemplateRequest, self).__init__(**kwargs)
+        self.virtual_machine_name = kwargs.get('virtual_machine_name', None)
+        self.parameters = kwargs.get('parameters', None)
+        self.location = kwargs.get('location', None)

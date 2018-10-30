@@ -15,7 +15,7 @@ from msrest.serialization import Model
 class DayDetails(Model):
     """Properties of a daily schedule.
 
-    :param time: The time of day the schedule will occur.
+    :param time:
     :type time: str
     """
 
@@ -23,6 +23,6 @@ class DayDetails(Model):
         'time': {'key': 'time', 'type': 'str'},
     }
 
-    def __init__(self, time=None):
-        super(DayDetails, self).__init__()
-        self.time = time
+    def __init__(self, **kwargs):
+        super(DayDetails, self).__init__(**kwargs)
+        self.time = kwargs.get('time', None)

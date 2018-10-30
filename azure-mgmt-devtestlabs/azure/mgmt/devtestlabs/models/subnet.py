@@ -13,15 +13,14 @@ from msrest.serialization import Model
 
 
 class Subnet(Model):
-    """Subnet information.
+    """Subnet.
 
-    :param resource_id: The resource ID of the subnet.
+    :param resource_id:
     :type resource_id: str
-    :param lab_subnet_name: The name of the subnet as seen in the lab.
+    :param lab_subnet_name:
     :type lab_subnet_name: str
-    :param allow_public_ip: The permission policy of the subnet for allowing
-     public IP addresses (i.e. Allow, Deny)). Possible values include:
-     'Default', 'Deny', 'Allow'
+    :param allow_public_ip: Possible values include: 'Default', 'Deny',
+     'Allow'
     :type allow_public_ip: str or
      ~azure.mgmt.devtestlabs.models.UsagePermissionType
     """
@@ -32,8 +31,8 @@ class Subnet(Model):
         'allow_public_ip': {'key': 'allowPublicIp', 'type': 'str'},
     }
 
-    def __init__(self, resource_id=None, lab_subnet_name=None, allow_public_ip=None):
-        super(Subnet, self).__init__()
-        self.resource_id = resource_id
-        self.lab_subnet_name = lab_subnet_name
-        self.allow_public_ip = allow_public_ip
+    def __init__(self, **kwargs):
+        super(Subnet, self).__init__(**kwargs)
+        self.resource_id = kwargs.get('resource_id', None)
+        self.lab_subnet_name = kwargs.get('lab_subnet_name', None)
+        self.allow_public_ip = kwargs.get('allow_public_ip', None)
