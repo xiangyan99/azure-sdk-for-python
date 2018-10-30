@@ -15,10 +15,9 @@ from msrest.serialization import Model
 class WeekDetails(Model):
     """Properties of a weekly schedule.
 
-    :param weekdays: The days of the week for which the schedule is set (e.g.
-     Sunday, Monday, Tuesday, etc.).
+    :param weekdays: The days of the week.
     :type weekdays: list[str]
-    :param time: The time of the day the schedule will occur.
+    :param time: The time of the day.
     :type time: str
     """
 
@@ -27,7 +26,7 @@ class WeekDetails(Model):
         'time': {'key': 'time', 'type': 'str'},
     }
 
-    def __init__(self, weekdays=None, time=None):
-        super(WeekDetails, self).__init__()
-        self.weekdays = weekdays
-        self.time = time
+    def __init__(self, **kwargs):
+        super(WeekDetails, self).__init__(**kwargs)
+        self.weekdays = kwargs.get('weekdays', None)
+        self.time = kwargs.get('time', None)
