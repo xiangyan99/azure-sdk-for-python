@@ -19,23 +19,14 @@ class CustomImagePropertiesCustom(Model):
     :type image_name: str
     :param sys_prep: Indicates whether sysprep has been run on the VHD.
     :type sys_prep: bool
-    :param os_type: The OS type of the custom image (i.e. Windows, Linux).
-     Possible values include: 'Windows', 'Linux', 'None'
-    :type os_type: str or ~azure.mgmt.devtestlabs.models.CustomImageOsType
     """
-
-    _validation = {
-        'os_type': {'required': True},
-    }
 
     _attribute_map = {
         'image_name': {'key': 'imageName', 'type': 'str'},
         'sys_prep': {'key': 'sysPrep', 'type': 'bool'},
-        'os_type': {'key': 'osType', 'type': 'str'},
     }
 
-    def __init__(self, os_type, image_name=None, sys_prep=None):
-        super(CustomImagePropertiesCustom, self).__init__()
-        self.image_name = image_name
-        self.sys_prep = sys_prep
-        self.os_type = os_type
+    def __init__(self, **kwargs):
+        super(CustomImagePropertiesCustom, self).__init__(**kwargs)
+        self.image_name = kwargs.get('image_name', None)
+        self.sys_prep = kwargs.get('sys_prep', None)
