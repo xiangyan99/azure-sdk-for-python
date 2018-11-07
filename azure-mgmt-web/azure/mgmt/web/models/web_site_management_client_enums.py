@@ -12,27 +12,6 @@
 from enum import Enum
 
 
-class KeyVaultSecretStatus(str, Enum):
-
-    initialized = "Initialized"
-    waiting_on_certificate_order = "WaitingOnCertificateOrder"
-    succeeded = "Succeeded"
-    certificate_order_failed = "CertificateOrderFailed"
-    operation_not_permitted_on_key_vault = "OperationNotPermittedOnKeyVault"
-    azure_service_unauthorized_to_access_key_vault = "AzureServiceUnauthorizedToAccessKeyVault"
-    key_vault_does_not_exist = "KeyVaultDoesNotExist"
-    key_vault_secret_does_not_exist = "KeyVaultSecretDoesNotExist"
-    unknown_error = "UnknownError"
-    external_private_key = "ExternalPrivateKey"
-    unknown = "Unknown"
-
-
-class CertificateProductType(str, Enum):
-
-    standard_domain_validated_ssl = "StandardDomainValidatedSsl"
-    standard_domain_validated_wild_card_ssl = "StandardDomainValidatedWildCardSsl"
-
-
 class ProvisioningState(str, Enum):
 
     succeeded = "Succeeded"
@@ -42,36 +21,43 @@ class ProvisioningState(str, Enum):
     deleting = "Deleting"
 
 
-class CertificateOrderStatus(str, Enum):
+class HostingEnvironmentStatus(str, Enum):
 
-    pendingissuance = "Pendingissuance"
-    issued = "Issued"
-    revoked = "Revoked"
-    canceled = "Canceled"
-    denied = "Denied"
-    pendingrevocation = "Pendingrevocation"
-    pending_rekey = "PendingRekey"
-    unused = "Unused"
-    expired = "Expired"
-    not_submitted = "NotSubmitted"
+    preparing = "Preparing"
+    ready = "Ready"
+    scaling = "Scaling"
+    deleting = "Deleting"
 
 
-class CertificateOrderActionType(str, Enum):
+class InternalLoadBalancingMode(str, Enum):
 
-    certificate_issued = "CertificateIssued"
-    certificate_order_canceled = "CertificateOrderCanceled"
-    certificate_order_created = "CertificateOrderCreated"
-    certificate_revoked = "CertificateRevoked"
-    domain_validation_complete = "DomainValidationComplete"
-    fraud_detected = "FraudDetected"
-    org_name_change = "OrgNameChange"
-    org_validation_complete = "OrgValidationComplete"
-    san_drop = "SanDrop"
-    fraud_cleared = "FraudCleared"
-    certificate_expired = "CertificateExpired"
-    certificate_expiration_warning = "CertificateExpirationWarning"
-    fraud_documentation_required = "FraudDocumentationRequired"
-    unknown = "Unknown"
+    none = "None"
+    web = "Web"
+    publishing = "Publishing"
+
+
+class ComputeModeOptions(str, Enum):
+
+    shared = "Shared"
+    dedicated = "Dedicated"
+    dynamic = "Dynamic"
+
+
+class WorkerSizeOptions(str, Enum):
+
+    small = "Small"
+    medium = "Medium"
+    large = "Large"
+    d1 = "D1"
+    d2 = "D2"
+    d3 = "D3"
+    default = "Default"
+
+
+class AccessControlEntryAction(str, Enum):
+
+    permit = "Permit"
+    deny = "Deny"
 
 
 class RouteType(str, Enum):
@@ -207,100 +193,6 @@ class StatusOptions(str, Enum):
     creating = "Creating"
 
 
-class DomainStatus(str, Enum):
-
-    active = "Active"
-    awaiting = "Awaiting"
-    cancelled = "Cancelled"
-    confiscated = "Confiscated"
-    disabled = "Disabled"
-    excluded = "Excluded"
-    expired = "Expired"
-    failed = "Failed"
-    held = "Held"
-    locked = "Locked"
-    parked = "Parked"
-    pending = "Pending"
-    reserved = "Reserved"
-    reverted = "Reverted"
-    suspended = "Suspended"
-    transferred = "Transferred"
-    unknown = "Unknown"
-    unlocked = "Unlocked"
-    unparked = "Unparked"
-    updated = "Updated"
-    json_converter_failed = "JsonConverterFailed"
-
-
-class AzureResourceType(str, Enum):
-
-    website = "Website"
-    traffic_manager = "TrafficManager"
-
-
-class CustomHostNameDnsRecordType(str, Enum):
-
-    cname = "CName"
-    a = "A"
-
-
-class HostNameType(str, Enum):
-
-    verified = "Verified"
-    managed = "Managed"
-
-
-class DnsType(str, Enum):
-
-    azure_dns = "AzureDns"
-    default_domain_registrar_dns = "DefaultDomainRegistrarDns"
-
-
-class DomainType(str, Enum):
-
-    regular = "Regular"
-    soft_deleted = "SoftDeleted"
-
-
-class HostingEnvironmentStatus(str, Enum):
-
-    preparing = "Preparing"
-    ready = "Ready"
-    scaling = "Scaling"
-    deleting = "Deleting"
-
-
-class InternalLoadBalancingMode(str, Enum):
-
-    none = "None"
-    web = "Web"
-    publishing = "Publishing"
-
-
-class ComputeModeOptions(str, Enum):
-
-    shared = "Shared"
-    dedicated = "Dedicated"
-    dynamic = "Dynamic"
-
-
-class WorkerSizeOptions(str, Enum):
-
-    small = "Small"
-    medium = "Medium"
-    large = "Large"
-    d1 = "D1"
-    d2 = "D2"
-    d3 = "D3"
-    default = "Default"
-
-
-class AccessControlEntryAction(str, Enum):
-
-    permit = "Permit"
-    deny = "Deny"
-
-
 class OperationStatus(str, Enum):
 
     in_progress = "InProgress"
@@ -308,6 +200,21 @@ class OperationStatus(str, Enum):
     succeeded = "Succeeded"
     timed_out = "TimedOut"
     created = "Created"
+
+
+class KeyVaultSecretStatus(str, Enum):
+
+    initialized = "Initialized"
+    waiting_on_certificate_order = "WaitingOnCertificateOrder"
+    succeeded = "Succeeded"
+    certificate_order_failed = "CertificateOrderFailed"
+    operation_not_permitted_on_key_vault = "OperationNotPermittedOnKeyVault"
+    azure_service_unauthorized_to_access_key_vault = "AzureServiceUnauthorizedToAccessKeyVault"
+    key_vault_does_not_exist = "KeyVaultDoesNotExist"
+    key_vault_secret_does_not_exist = "KeyVaultSecretDoesNotExist"
+    unknown_error = "UnknownError"
+    external_private_key = "ExternalPrivateKey"
+    unknown = "Unknown"
 
 
 class IssueType(str, Enum):
@@ -461,6 +368,24 @@ class DnsVerificationTestResult(str, Enum):
     skipped = "Skipped"
 
 
+class AzureResourceType(str, Enum):
+
+    website = "Website"
+    traffic_manager = "TrafficManager"
+
+
+class CustomHostNameDnsRecordType(str, Enum):
+
+    cname = "CName"
+    a = "A"
+
+
+class HostNameType(str, Enum):
+
+    verified = "Verified"
+    managed = "Managed"
+
+
 class MSDeployLogEntryType(str, Enum):
 
     message = "Message"
@@ -544,3 +469,5 @@ class SkuName(str, Enum):
     dynamic = "Dynamic"
     isolated = "Isolated"
     premium_v2 = "PremiumV2"
+    elastic_premium = "ElasticPremium"
+    elastic_isolated = "ElasticIsolated"

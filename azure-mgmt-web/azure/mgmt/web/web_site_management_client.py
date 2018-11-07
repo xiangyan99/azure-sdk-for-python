@@ -18,20 +18,15 @@ from msrestazure.azure_exceptions import CloudError
 from msrest.polling import LROPoller, NoPolling
 from msrestazure.polling.arm_polling import ARMPolling
 import uuid
-from .operations.app_service_certificate_orders_operations import AppServiceCertificateOrdersOperations
-from .operations.certificate_registration_provider_operations import CertificateRegistrationProviderOperations
-from .operations.domains_operations import DomainsOperations
-from .operations.top_level_domains_operations import TopLevelDomainsOperations
-from .operations.domain_registration_provider_operations import DomainRegistrationProviderOperations
+from .operations.app_service_environments_operations import AppServiceEnvironmentsOperations
+from .operations.app_service_plans_operations import AppServicePlansOperations
 from .operations.certificates_operations import CertificatesOperations
 from .operations.deleted_web_apps_operations import DeletedWebAppsOperations
 from .operations.diagnostics_operations import DiagnosticsOperations
 from .operations.provider_operations import ProviderOperations
 from .operations.recommendations_operations import RecommendationsOperations
-from .operations.web_apps_operations import WebAppsOperations
-from .operations.app_service_environments_operations import AppServiceEnvironmentsOperations
-from .operations.app_service_plans_operations import AppServicePlansOperations
 from .operations.resource_health_metadata_operations import ResourceHealthMetadataOperations
+from .operations.web_apps_operations import WebAppsOperations
 from . import models
 
 
@@ -74,16 +69,10 @@ class WebSiteManagementClient(SDKClient):
     :ivar config: Configuration for client.
     :vartype config: WebSiteManagementClientConfiguration
 
-    :ivar app_service_certificate_orders: AppServiceCertificateOrders operations
-    :vartype app_service_certificate_orders: azure.mgmt.web.operations.AppServiceCertificateOrdersOperations
-    :ivar certificate_registration_provider: CertificateRegistrationProvider operations
-    :vartype certificate_registration_provider: azure.mgmt.web.operations.CertificateRegistrationProviderOperations
-    :ivar domains: Domains operations
-    :vartype domains: azure.mgmt.web.operations.DomainsOperations
-    :ivar top_level_domains: TopLevelDomains operations
-    :vartype top_level_domains: azure.mgmt.web.operations.TopLevelDomainsOperations
-    :ivar domain_registration_provider: DomainRegistrationProvider operations
-    :vartype domain_registration_provider: azure.mgmt.web.operations.DomainRegistrationProviderOperations
+    :ivar app_service_environments: AppServiceEnvironments operations
+    :vartype app_service_environments: azure.mgmt.web.operations.AppServiceEnvironmentsOperations
+    :ivar app_service_plans: AppServicePlans operations
+    :vartype app_service_plans: azure.mgmt.web.operations.AppServicePlansOperations
     :ivar certificates: Certificates operations
     :vartype certificates: azure.mgmt.web.operations.CertificatesOperations
     :ivar deleted_web_apps: DeletedWebApps operations
@@ -94,14 +83,10 @@ class WebSiteManagementClient(SDKClient):
     :vartype provider: azure.mgmt.web.operations.ProviderOperations
     :ivar recommendations: Recommendations operations
     :vartype recommendations: azure.mgmt.web.operations.RecommendationsOperations
-    :ivar web_apps: WebApps operations
-    :vartype web_apps: azure.mgmt.web.operations.WebAppsOperations
-    :ivar app_service_environments: AppServiceEnvironments operations
-    :vartype app_service_environments: azure.mgmt.web.operations.AppServiceEnvironmentsOperations
-    :ivar app_service_plans: AppServicePlans operations
-    :vartype app_service_plans: azure.mgmt.web.operations.AppServicePlansOperations
     :ivar resource_health_metadata: ResourceHealthMetadata operations
     :vartype resource_health_metadata: azure.mgmt.web.operations.ResourceHealthMetadataOperations
+    :ivar web_apps: WebApps operations
+    :vartype web_apps: azure.mgmt.web.operations.WebAppsOperations
 
     :param credentials: Credentials needed for the client to connect to Azure.
     :type credentials: :mod:`A msrestazure Credentials
@@ -119,19 +104,13 @@ class WebSiteManagementClient(SDKClient):
         super(WebSiteManagementClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '2018-02-01'
+        self.api_version = '2018-11-01'
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.app_service_certificate_orders = AppServiceCertificateOrdersOperations(
+        self.app_service_environments = AppServiceEnvironmentsOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.certificate_registration_provider = CertificateRegistrationProviderOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.domains = DomainsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.top_level_domains = TopLevelDomainsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.domain_registration_provider = DomainRegistrationProviderOperations(
+        self.app_service_plans = AppServicePlansOperations(
             self._client, self.config, self._serialize, self._deserialize)
         self.certificates = CertificatesOperations(
             self._client, self.config, self._serialize, self._deserialize)
@@ -143,13 +122,9 @@ class WebSiteManagementClient(SDKClient):
             self._client, self.config, self._serialize, self._deserialize)
         self.recommendations = RecommendationsOperations(
             self._client, self.config, self._serialize, self._deserialize)
-        self.web_apps = WebAppsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.app_service_environments = AppServiceEnvironmentsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.app_service_plans = AppServicePlansOperations(
-            self._client, self.config, self._serialize, self._deserialize)
         self.resource_health_metadata = ResourceHealthMetadataOperations(
+            self._client, self.config, self._serialize, self._deserialize)
+        self.web_apps = WebAppsOperations(
             self._client, self.config, self._serialize, self._deserialize)
 
     def get_publishing_user(
@@ -652,14 +627,14 @@ class WebSiteManagementClient(SDKClient):
     get_subscription_deployment_locations.metadata = {'url': '/subscriptions/{subscriptionId}/providers/Microsoft.Web/deploymentLocations'}
 
     def list_geo_regions(
-            self, sku=None, linux_workers_enabled=None, xenon_workers_enabled=None, custom_headers=None, raw=False, **operation_config):
+            self, sku=None, linux_workers_enabled=None, xenon_workers_enabled=None, linux_dynamic_workers_enabled=None, custom_headers=None, raw=False, **operation_config):
         """Get a list of available geographical regions.
 
         Get a list of available geographical regions.
 
         :param sku: Name of SKU used to filter the regions. Possible values
          include: 'Free', 'Shared', 'Basic', 'Standard', 'Premium', 'Dynamic',
-         'Isolated', 'PremiumV2'
+         'Isolated', 'PremiumV2', 'ElasticPremium', 'ElasticIsolated'
         :type sku: str or ~azure.mgmt.web.models.SkuName
         :param linux_workers_enabled: Specify <code>true</code> if you want to
          filter to only regions that support Linux workers.
@@ -667,6 +642,9 @@ class WebSiteManagementClient(SDKClient):
         :param xenon_workers_enabled: Specify <code>true</code> if you want to
          filter to only regions that support Xenon workers.
         :type xenon_workers_enabled: bool
+        :param linux_dynamic_workers_enabled: Specify <code>true</code> if you
+         want to filter to only regions that support Linux Consumption Workers.
+        :type linux_dynamic_workers_enabled: bool
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
          deserialized response
@@ -696,6 +674,8 @@ class WebSiteManagementClient(SDKClient):
                     query_parameters['linuxWorkersEnabled'] = self._serialize.query("linux_workers_enabled", linux_workers_enabled, 'bool')
                 if xenon_workers_enabled is not None:
                     query_parameters['xenonWorkersEnabled'] = self._serialize.query("xenon_workers_enabled", xenon_workers_enabled, 'bool')
+                if linux_dynamic_workers_enabled is not None:
+                    query_parameters['linuxDynamicWorkersEnabled'] = self._serialize.query("linux_dynamic_workers_enabled", linux_dynamic_workers_enabled, 'bool')
                 query_parameters['api-version'] = self._serialize.query("self.api_version", self.api_version, 'str')
 
             else:
