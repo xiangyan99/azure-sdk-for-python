@@ -22,7 +22,7 @@ class ProviderOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: API Version. Constant value: "2018-02-01".
+    :ivar api_version: API Version. Constant value: "2018-11-01".
     """
 
     models = models
@@ -32,7 +32,7 @@ class ProviderOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-02-01"
+        self.api_version = "2018-11-01"
 
         self.config = config
 
@@ -42,7 +42,8 @@ class ProviderOperations(object):
 
         Get available application frameworks and their versions.
 
-        :param os_type_selected: Possible values include: 'Windows', 'Linux'
+        :param os_type_selected: Possible values include: 'Windows', 'Linux',
+         'WindowsFunctions', 'LinuxFunctions'
         :type os_type_selected: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
@@ -170,7 +171,8 @@ class ProviderOperations(object):
 
         Get available application frameworks and their versions.
 
-        :param os_type_selected: Possible values include: 'Windows', 'Linux'
+        :param os_type_selected: Possible values include: 'Windows', 'Linux',
+         'WindowsFunctions', 'LinuxFunctions'
         :type os_type_selected: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
