@@ -10,18 +10,25 @@
 # --------------------------------------------------------------------------
 
 try:
-    from .app_service_certificate_py3 import AppServiceCertificate
-    from .app_service_certificate_resource_py3 import AppServiceCertificateResource
-    from .certificate_details_py3 import CertificateDetails
-    from .app_service_certificate_order_py3 import AppServiceCertificateOrder
-    from .app_service_certificate_order_patch_resource_py3 import AppServiceCertificateOrderPatchResource
-    from .app_service_certificate_patch_resource_py3 import AppServiceCertificatePatchResource
-    from .certificate_email_py3 import CertificateEmail
-    from .certificate_order_action_py3 import CertificateOrderAction
-    from .reissue_certificate_order_request_py3 import ReissueCertificateOrderRequest
-    from .renew_certificate_order_request_py3 import RenewCertificateOrderRequest
-    from .site_seal_py3 import SiteSeal
-    from .site_seal_request_py3 import SiteSealRequest
+    from .virtual_ip_mapping_py3 import VirtualIPMapping
+    from .address_response_py3 import AddressResponse
+    from .virtual_network_profile_py3 import VirtualNetworkProfile
+    from .worker_pool_py3 import WorkerPool
+    from .stamp_capacity_py3 import StampCapacity
+    from .network_access_control_entry_py3 import NetworkAccessControlEntry
+    from .name_value_pair_py3 import NameValuePair
+    from .app_service_environment_py3 import AppServiceEnvironment
+    from .app_service_environment_resource_py3 import AppServiceEnvironmentResource
+    from .app_service_environment_patch_resource_py3 import AppServiceEnvironmentPatchResource
+    from .hosting_environment_diagnostics_py3 import HostingEnvironmentDiagnostics
+    from .metric_availabilily_py3 import MetricAvailabilily
+    from .metric_definition_py3 import MetricDefinition
+    from .sku_capacity_py3 import SkuCapacity
+    from .capability_py3 import Capability
+    from .sku_description_py3 import SkuDescription
+    from .sku_info_py3 import SkuInfo
+    from .usage_py3 import Usage
+    from .worker_pool_resource_py3 import WorkerPoolResource
     from .vnet_route_py3 import VnetRoute
     from .vnet_info_py3 import VnetInfo
     from .vnet_gateway_py3 import VnetGateway
@@ -58,57 +65,36 @@ try:
     from .site_machine_key_py3 import SiteMachineKey
     from .conn_string_info_py3 import ConnStringInfo
     from .azure_storage_info_value_py3 import AzureStorageInfoValue
-    from .name_value_pair_py3 import NameValuePair
     from .site_config_py3 import SiteConfig
     from .host_name_ssl_state_py3 import HostNameSslState
     from .site_py3 import Site
-    from .capability_py3 import Capability
-    from .sku_capacity_py3 import SkuCapacity
-    from .sku_description_py3 import SkuDescription
     from .app_service_plan_py3 import AppServicePlan
     from .resource_py3 import Resource
     from .default_error_response_error_details_item_py3 import DefaultErrorResponseErrorDetailsItem
     from .default_error_response_error_py3 import DefaultErrorResponseError
     from .default_error_response_py3 import DefaultErrorResponse, DefaultErrorResponseException
-    from .name_identifier_py3 import NameIdentifier
-    from .log_specification_py3 import LogSpecification
-    from .metric_availability_py3 import MetricAvailability
-    from .dimension_py3 import Dimension
-    from .metric_specification_py3 import MetricSpecification
-    from .service_specification_py3 import ServiceSpecification
-    from .csm_operation_description_properties_py3 import CsmOperationDescriptionProperties
-    from .csm_operation_display_py3 import CsmOperationDisplay
-    from .csm_operation_description_py3 import CsmOperationDescription
-    from .address_py3 import Address
-    from .contact_py3 import Contact
-    from .host_name_py3 import HostName
-    from .domain_purchase_consent_py3 import DomainPurchaseConsent
-    from .domain_py3 import Domain
-    from .domain_availablility_check_result_py3 import DomainAvailablilityCheckResult
-    from .domain_control_center_sso_request_py3 import DomainControlCenterSsoRequest
-    from .domain_ownership_identifier_py3 import DomainOwnershipIdentifier
-    from .domain_patch_resource_py3 import DomainPatchResource
-    from .domain_recommendation_search_parameters_py3 import DomainRecommendationSearchParameters
-    from .tld_legal_agreement_py3 import TldLegalAgreement
-    from .top_level_domain_py3 import TopLevelDomain
-    from .top_level_domain_agreement_option_py3 import TopLevelDomainAgreementOption
-    from .certificate_py3 import Certificate
-    from .certificate_patch_resource_py3 import CertificatePatchResource
-    from .virtual_network_profile_py3 import VirtualNetworkProfile
-    from .worker_pool_py3 import WorkerPool
-    from .virtual_ip_mapping_py3 import VirtualIPMapping
-    from .stamp_capacity_py3 import StampCapacity
-    from .network_access_control_entry_py3 import NetworkAccessControlEntry
-    from .app_service_environment_py3 import AppServiceEnvironment
-    from .localizable_string_py3 import LocalizableString
-    from .csm_usage_quota_py3 import CsmUsageQuota
-    from .error_entity_py3 import ErrorEntity
-    from .operation_py3 import Operation
-    from .resource_metric_name_py3 import ResourceMetricName
     from .resource_metric_property_py3 import ResourceMetricProperty
     from .resource_metric_value_py3 import ResourceMetricValue
+    from .resource_metric_name_py3 import ResourceMetricName
     from .resource_metric_py3 import ResourceMetric
+    from .localizable_string_py3 import LocalizableString
+    from .csm_usage_quota_py3 import CsmUsageQuota
     from .web_app_collection_py3 import WebAppCollection
+    from .error_entity_py3 import ErrorEntity
+    from .operation_py3 import Operation
+    from .app_service_plan_patch_resource_py3 import AppServicePlanPatchResource
+    from .hybrid_connection_limits_py3 import HybridConnectionLimits
+    from .certificate_py3 import Certificate
+    from .certificate_patch_resource_py3 import CertificatePatchResource
+    from .csm_operation_display_py3 import CsmOperationDisplay
+    from .dimension_py3 import Dimension
+    from .metric_availability_py3 import MetricAvailability
+    from .metric_specification_py3 import MetricSpecification
+    from .log_specification_py3 import LogSpecification
+    from .service_specification_py3 import ServiceSpecification
+    from .csm_operation_description_properties_py3 import CsmOperationDescriptionProperties
+    from .csm_operation_description_py3 import CsmOperationDescription
+    from .name_identifier_py3 import NameIdentifier
     from .solution_py3 import Solution
     from .detector_abnormal_time_period_py3 import DetectorAbnormalTimePeriod
     from .abnormal_time_period_py3 import AbnormalTimePeriod
@@ -133,6 +119,7 @@ try:
     from .application_stack_py3 import ApplicationStack
     from .recommendation_py3 import Recommendation
     from .recommendation_rule_py3 import RecommendationRule
+    from .resource_health_metadata_py3 import ResourceHealthMetadata
     from .billing_meter_py3 import BillingMeter
     from .csm_move_resource_envelope_py3 import CsmMoveResourceEnvelope
     from .geo_region_py3 import GeoRegion
@@ -182,6 +169,7 @@ try:
     from .migrate_my_sql_status_py3 import MigrateMySqlStatus
     from .relay_service_connection_entity_py3 import RelayServiceConnectionEntity
     from .network_features_py3 import NetworkFeatures
+    from .network_trace_py3 import NetworkTrace
     from .perf_mon_sample_py3 import PerfMonSample
     from .perf_mon_set_py3 import PerfMonSet
     from .perf_mon_response_py3 import PerfMonResponse
@@ -218,31 +206,26 @@ try:
     from .triggered_job_history_py3 import TriggeredJobHistory
     from .triggered_web_job_py3 import TriggeredWebJob
     from .web_job_py3 import WebJob
-    from .address_response_py3 import AddressResponse
-    from .app_service_environment_resource_py3 import AppServiceEnvironmentResource
-    from .app_service_environment_patch_resource_py3 import AppServiceEnvironmentPatchResource
-    from .hosting_environment_diagnostics_py3 import HostingEnvironmentDiagnostics
-    from .metric_availabilily_py3 import MetricAvailabilily
-    from .metric_definition_py3 import MetricDefinition
-    from .sku_info_py3 import SkuInfo
-    from .usage_py3 import Usage
-    from .worker_pool_resource_py3 import WorkerPoolResource
-    from .app_service_plan_patch_resource_py3 import AppServicePlanPatchResource
-    from .hybrid_connection_limits_py3 import HybridConnectionLimits
-    from .resource_health_metadata_py3 import ResourceHealthMetadata
 except (SyntaxError, ImportError):
-    from .app_service_certificate import AppServiceCertificate
-    from .app_service_certificate_resource import AppServiceCertificateResource
-    from .certificate_details import CertificateDetails
-    from .app_service_certificate_order import AppServiceCertificateOrder
-    from .app_service_certificate_order_patch_resource import AppServiceCertificateOrderPatchResource
-    from .app_service_certificate_patch_resource import AppServiceCertificatePatchResource
-    from .certificate_email import CertificateEmail
-    from .certificate_order_action import CertificateOrderAction
-    from .reissue_certificate_order_request import ReissueCertificateOrderRequest
-    from .renew_certificate_order_request import RenewCertificateOrderRequest
-    from .site_seal import SiteSeal
-    from .site_seal_request import SiteSealRequest
+    from .virtual_ip_mapping import VirtualIPMapping
+    from .address_response import AddressResponse
+    from .virtual_network_profile import VirtualNetworkProfile
+    from .worker_pool import WorkerPool
+    from .stamp_capacity import StampCapacity
+    from .network_access_control_entry import NetworkAccessControlEntry
+    from .name_value_pair import NameValuePair
+    from .app_service_environment import AppServiceEnvironment
+    from .app_service_environment_resource import AppServiceEnvironmentResource
+    from .app_service_environment_patch_resource import AppServiceEnvironmentPatchResource
+    from .hosting_environment_diagnostics import HostingEnvironmentDiagnostics
+    from .metric_availabilily import MetricAvailabilily
+    from .metric_definition import MetricDefinition
+    from .sku_capacity import SkuCapacity
+    from .capability import Capability
+    from .sku_description import SkuDescription
+    from .sku_info import SkuInfo
+    from .usage import Usage
+    from .worker_pool_resource import WorkerPoolResource
     from .vnet_route import VnetRoute
     from .vnet_info import VnetInfo
     from .vnet_gateway import VnetGateway
@@ -279,57 +262,36 @@ except (SyntaxError, ImportError):
     from .site_machine_key import SiteMachineKey
     from .conn_string_info import ConnStringInfo
     from .azure_storage_info_value import AzureStorageInfoValue
-    from .name_value_pair import NameValuePair
     from .site_config import SiteConfig
     from .host_name_ssl_state import HostNameSslState
     from .site import Site
-    from .capability import Capability
-    from .sku_capacity import SkuCapacity
-    from .sku_description import SkuDescription
     from .app_service_plan import AppServicePlan
     from .resource import Resource
     from .default_error_response_error_details_item import DefaultErrorResponseErrorDetailsItem
     from .default_error_response_error import DefaultErrorResponseError
     from .default_error_response import DefaultErrorResponse, DefaultErrorResponseException
-    from .name_identifier import NameIdentifier
-    from .log_specification import LogSpecification
-    from .metric_availability import MetricAvailability
-    from .dimension import Dimension
-    from .metric_specification import MetricSpecification
-    from .service_specification import ServiceSpecification
-    from .csm_operation_description_properties import CsmOperationDescriptionProperties
-    from .csm_operation_display import CsmOperationDisplay
-    from .csm_operation_description import CsmOperationDescription
-    from .address import Address
-    from .contact import Contact
-    from .host_name import HostName
-    from .domain_purchase_consent import DomainPurchaseConsent
-    from .domain import Domain
-    from .domain_availablility_check_result import DomainAvailablilityCheckResult
-    from .domain_control_center_sso_request import DomainControlCenterSsoRequest
-    from .domain_ownership_identifier import DomainOwnershipIdentifier
-    from .domain_patch_resource import DomainPatchResource
-    from .domain_recommendation_search_parameters import DomainRecommendationSearchParameters
-    from .tld_legal_agreement import TldLegalAgreement
-    from .top_level_domain import TopLevelDomain
-    from .top_level_domain_agreement_option import TopLevelDomainAgreementOption
-    from .certificate import Certificate
-    from .certificate_patch_resource import CertificatePatchResource
-    from .virtual_network_profile import VirtualNetworkProfile
-    from .worker_pool import WorkerPool
-    from .virtual_ip_mapping import VirtualIPMapping
-    from .stamp_capacity import StampCapacity
-    from .network_access_control_entry import NetworkAccessControlEntry
-    from .app_service_environment import AppServiceEnvironment
-    from .localizable_string import LocalizableString
-    from .csm_usage_quota import CsmUsageQuota
-    from .error_entity import ErrorEntity
-    from .operation import Operation
-    from .resource_metric_name import ResourceMetricName
     from .resource_metric_property import ResourceMetricProperty
     from .resource_metric_value import ResourceMetricValue
+    from .resource_metric_name import ResourceMetricName
     from .resource_metric import ResourceMetric
+    from .localizable_string import LocalizableString
+    from .csm_usage_quota import CsmUsageQuota
     from .web_app_collection import WebAppCollection
+    from .error_entity import ErrorEntity
+    from .operation import Operation
+    from .app_service_plan_patch_resource import AppServicePlanPatchResource
+    from .hybrid_connection_limits import HybridConnectionLimits
+    from .certificate import Certificate
+    from .certificate_patch_resource import CertificatePatchResource
+    from .csm_operation_display import CsmOperationDisplay
+    from .dimension import Dimension
+    from .metric_availability import MetricAvailability
+    from .metric_specification import MetricSpecification
+    from .log_specification import LogSpecification
+    from .service_specification import ServiceSpecification
+    from .csm_operation_description_properties import CsmOperationDescriptionProperties
+    from .csm_operation_description import CsmOperationDescription
+    from .name_identifier import NameIdentifier
     from .solution import Solution
     from .detector_abnormal_time_period import DetectorAbnormalTimePeriod
     from .abnormal_time_period import AbnormalTimePeriod
@@ -354,6 +316,7 @@ except (SyntaxError, ImportError):
     from .application_stack import ApplicationStack
     from .recommendation import Recommendation
     from .recommendation_rule import RecommendationRule
+    from .resource_health_metadata import ResourceHealthMetadata
     from .billing_meter import BillingMeter
     from .csm_move_resource_envelope import CsmMoveResourceEnvelope
     from .geo_region import GeoRegion
@@ -403,6 +366,7 @@ except (SyntaxError, ImportError):
     from .migrate_my_sql_status import MigrateMySqlStatus
     from .relay_service_connection_entity import RelayServiceConnectionEntity
     from .network_features import NetworkFeatures
+    from .network_trace import NetworkTrace
     from .perf_mon_sample import PerfMonSample
     from .perf_mon_set import PerfMonSet
     from .perf_mon_response import PerfMonResponse
@@ -439,26 +403,18 @@ except (SyntaxError, ImportError):
     from .triggered_job_history import TriggeredJobHistory
     from .triggered_web_job import TriggeredWebJob
     from .web_job import WebJob
-    from .address_response import AddressResponse
-    from .app_service_environment_resource import AppServiceEnvironmentResource
-    from .app_service_environment_patch_resource import AppServiceEnvironmentPatchResource
-    from .hosting_environment_diagnostics import HostingEnvironmentDiagnostics
-    from .metric_availabilily import MetricAvailabilily
-    from .metric_definition import MetricDefinition
-    from .sku_info import SkuInfo
-    from .usage import Usage
-    from .worker_pool_resource import WorkerPoolResource
-    from .app_service_plan_patch_resource import AppServicePlanPatchResource
-    from .hybrid_connection_limits import HybridConnectionLimits
-    from .resource_health_metadata import ResourceHealthMetadata
-from .app_service_certificate_order_paged import AppServiceCertificateOrderPaged
-from .app_service_certificate_resource_paged import AppServiceCertificateResourcePaged
-from .csm_operation_description_paged import CsmOperationDescriptionPaged
-from .domain_paged import DomainPaged
-from .name_identifier_paged import NameIdentifierPaged
-from .domain_ownership_identifier_paged import DomainOwnershipIdentifierPaged
-from .top_level_domain_paged import TopLevelDomainPaged
-from .tld_legal_agreement_paged import TldLegalAgreementPaged
+from .app_service_environment_resource_paged import AppServiceEnvironmentResourcePaged
+from .stamp_capacity_paged import StampCapacityPaged
+from .resource_metric_paged import ResourceMetricPaged
+from .worker_pool_resource_paged import WorkerPoolResourcePaged
+from .resource_metric_definition_paged import ResourceMetricDefinitionPaged
+from .sku_info_paged import SkuInfoPaged
+from .usage_paged import UsagePaged
+from .app_service_plan_paged import AppServicePlanPaged
+from .site_paged import SitePaged
+from .csm_usage_quota_paged import CsmUsageQuotaPaged
+from .str_paged import StrPaged
+from .hybrid_connection_paged import HybridConnectionPaged
 from .certificate_paged import CertificatePaged
 from .deleted_site_paged import DeletedSitePaged
 from .detector_response_paged import DetectorResponsePaged
@@ -466,13 +422,14 @@ from .diagnostic_category_paged import DiagnosticCategoryPaged
 from .analysis_definition_paged import AnalysisDefinitionPaged
 from .detector_definition_paged import DetectorDefinitionPaged
 from .application_stack_paged import ApplicationStackPaged
+from .csm_operation_description_paged import CsmOperationDescriptionPaged
 from .recommendation_paged import RecommendationPaged
+from .resource_health_metadata_paged import ResourceHealthMetadataPaged
 from .source_control_paged import SourceControlPaged
 from .billing_meter_paged import BillingMeterPaged
 from .geo_region_paged import GeoRegionPaged
 from .identifier_paged import IdentifierPaged
 from .premier_add_on_offer_paged import PremierAddOnOfferPaged
-from .site_paged import SitePaged
 from .backup_item_paged import BackupItemPaged
 from .site_config_resource_paged import SiteConfigResourcePaged
 from .site_configuration_snapshot_info_paged import SiteConfigurationSnapshotInfoPaged
@@ -484,8 +441,6 @@ from .site_instance_paged import SiteInstancePaged
 from .process_info_paged import ProcessInfoPaged
 from .process_module_info_paged import ProcessModuleInfoPaged
 from .process_thread_info_paged import ProcessThreadInfoPaged
-from .resource_metric_definition_paged import ResourceMetricDefinitionPaged
-from .resource_metric_paged import ResourceMetricPaged
 from .perf_mon_response_paged import PerfMonResponsePaged
 from .public_certificate_paged import PublicCertificatePaged
 from .site_extension_info_paged import SiteExtensionInfoPaged
@@ -493,23 +448,14 @@ from .slot_difference_paged import SlotDifferencePaged
 from .snapshot_paged import SnapshotPaged
 from .triggered_web_job_paged import TriggeredWebJobPaged
 from .triggered_job_history_paged import TriggeredJobHistoryPaged
-from .csm_usage_quota_paged import CsmUsageQuotaPaged
 from .web_job_paged import WebJobPaged
-from .app_service_environment_resource_paged import AppServiceEnvironmentResourcePaged
-from .stamp_capacity_paged import StampCapacityPaged
-from .worker_pool_resource_paged import WorkerPoolResourcePaged
-from .sku_info_paged import SkuInfoPaged
-from .usage_paged import UsagePaged
-from .app_service_plan_paged import AppServicePlanPaged
-from .str_paged import StrPaged
-from .hybrid_connection_paged import HybridConnectionPaged
-from .resource_health_metadata_paged import ResourceHealthMetadataPaged
 from .web_site_management_client_enums import (
-    KeyVaultSecretStatus,
-    CertificateProductType,
     ProvisioningState,
-    CertificateOrderStatus,
-    CertificateOrderActionType,
+    HostingEnvironmentStatus,
+    InternalLoadBalancingMode,
+    ComputeModeOptions,
+    WorkerSizeOptions,
+    AccessControlEntryAction,
     RouteType,
     ManagedServiceIdentityType,
     IpFilterTag,
@@ -527,18 +473,8 @@ from .web_site_management_client_enums import (
     UsageState,
     SiteAvailabilityState,
     StatusOptions,
-    DomainStatus,
-    AzureResourceType,
-    CustomHostNameDnsRecordType,
-    HostNameType,
-    DnsType,
-    DomainType,
-    HostingEnvironmentStatus,
-    InternalLoadBalancingMode,
-    ComputeModeOptions,
-    WorkerSizeOptions,
-    AccessControlEntryAction,
     OperationStatus,
+    KeyVaultSecretStatus,
     IssueType,
     SolutionType,
     RenderingType,
@@ -557,6 +493,9 @@ from .web_site_management_client_enums import (
     WebJobType,
     PublishingProfileFormat,
     DnsVerificationTestResult,
+    AzureResourceType,
+    CustomHostNameDnsRecordType,
+    HostNameType,
     MSDeployLogEntryType,
     MSDeployProvisioningState,
     MySqlMigrationType,
@@ -571,18 +510,25 @@ from .web_site_management_client_enums import (
 )
 
 __all__ = [
-    'AppServiceCertificate',
-    'AppServiceCertificateResource',
-    'CertificateDetails',
-    'AppServiceCertificateOrder',
-    'AppServiceCertificateOrderPatchResource',
-    'AppServiceCertificatePatchResource',
-    'CertificateEmail',
-    'CertificateOrderAction',
-    'ReissueCertificateOrderRequest',
-    'RenewCertificateOrderRequest',
-    'SiteSeal',
-    'SiteSealRequest',
+    'VirtualIPMapping',
+    'AddressResponse',
+    'VirtualNetworkProfile',
+    'WorkerPool',
+    'StampCapacity',
+    'NetworkAccessControlEntry',
+    'NameValuePair',
+    'AppServiceEnvironment',
+    'AppServiceEnvironmentResource',
+    'AppServiceEnvironmentPatchResource',
+    'HostingEnvironmentDiagnostics',
+    'MetricAvailabilily',
+    'MetricDefinition',
+    'SkuCapacity',
+    'Capability',
+    'SkuDescription',
+    'SkuInfo',
+    'Usage',
+    'WorkerPoolResource',
     'VnetRoute',
     'VnetInfo',
     'VnetGateway',
@@ -619,57 +565,36 @@ __all__ = [
     'SiteMachineKey',
     'ConnStringInfo',
     'AzureStorageInfoValue',
-    'NameValuePair',
     'SiteConfig',
     'HostNameSslState',
     'Site',
-    'Capability',
-    'SkuCapacity',
-    'SkuDescription',
     'AppServicePlan',
     'Resource',
     'DefaultErrorResponseErrorDetailsItem',
     'DefaultErrorResponseError',
     'DefaultErrorResponse', 'DefaultErrorResponseException',
-    'NameIdentifier',
-    'LogSpecification',
-    'MetricAvailability',
-    'Dimension',
-    'MetricSpecification',
-    'ServiceSpecification',
-    'CsmOperationDescriptionProperties',
-    'CsmOperationDisplay',
-    'CsmOperationDescription',
-    'Address',
-    'Contact',
-    'HostName',
-    'DomainPurchaseConsent',
-    'Domain',
-    'DomainAvailablilityCheckResult',
-    'DomainControlCenterSsoRequest',
-    'DomainOwnershipIdentifier',
-    'DomainPatchResource',
-    'DomainRecommendationSearchParameters',
-    'TldLegalAgreement',
-    'TopLevelDomain',
-    'TopLevelDomainAgreementOption',
-    'Certificate',
-    'CertificatePatchResource',
-    'VirtualNetworkProfile',
-    'WorkerPool',
-    'VirtualIPMapping',
-    'StampCapacity',
-    'NetworkAccessControlEntry',
-    'AppServiceEnvironment',
-    'LocalizableString',
-    'CsmUsageQuota',
-    'ErrorEntity',
-    'Operation',
-    'ResourceMetricName',
     'ResourceMetricProperty',
     'ResourceMetricValue',
+    'ResourceMetricName',
     'ResourceMetric',
+    'LocalizableString',
+    'CsmUsageQuota',
     'WebAppCollection',
+    'ErrorEntity',
+    'Operation',
+    'AppServicePlanPatchResource',
+    'HybridConnectionLimits',
+    'Certificate',
+    'CertificatePatchResource',
+    'CsmOperationDisplay',
+    'Dimension',
+    'MetricAvailability',
+    'MetricSpecification',
+    'LogSpecification',
+    'ServiceSpecification',
+    'CsmOperationDescriptionProperties',
+    'CsmOperationDescription',
+    'NameIdentifier',
     'Solution',
     'DetectorAbnormalTimePeriod',
     'AbnormalTimePeriod',
@@ -694,6 +619,7 @@ __all__ = [
     'ApplicationStack',
     'Recommendation',
     'RecommendationRule',
+    'ResourceHealthMetadata',
     'BillingMeter',
     'CsmMoveResourceEnvelope',
     'GeoRegion',
@@ -743,6 +669,7 @@ __all__ = [
     'MigrateMySqlStatus',
     'RelayServiceConnectionEntity',
     'NetworkFeatures',
+    'NetworkTrace',
     'PerfMonSample',
     'PerfMonSet',
     'PerfMonResponse',
@@ -779,26 +706,18 @@ __all__ = [
     'TriggeredJobHistory',
     'TriggeredWebJob',
     'WebJob',
-    'AddressResponse',
-    'AppServiceEnvironmentResource',
-    'AppServiceEnvironmentPatchResource',
-    'HostingEnvironmentDiagnostics',
-    'MetricAvailabilily',
-    'MetricDefinition',
-    'SkuInfo',
-    'Usage',
-    'WorkerPoolResource',
-    'AppServicePlanPatchResource',
-    'HybridConnectionLimits',
-    'ResourceHealthMetadata',
-    'AppServiceCertificateOrderPaged',
-    'AppServiceCertificateResourcePaged',
-    'CsmOperationDescriptionPaged',
-    'DomainPaged',
-    'NameIdentifierPaged',
-    'DomainOwnershipIdentifierPaged',
-    'TopLevelDomainPaged',
-    'TldLegalAgreementPaged',
+    'AppServiceEnvironmentResourcePaged',
+    'StampCapacityPaged',
+    'ResourceMetricPaged',
+    'WorkerPoolResourcePaged',
+    'ResourceMetricDefinitionPaged',
+    'SkuInfoPaged',
+    'UsagePaged',
+    'AppServicePlanPaged',
+    'SitePaged',
+    'CsmUsageQuotaPaged',
+    'StrPaged',
+    'HybridConnectionPaged',
     'CertificatePaged',
     'DeletedSitePaged',
     'DetectorResponsePaged',
@@ -806,13 +725,14 @@ __all__ = [
     'AnalysisDefinitionPaged',
     'DetectorDefinitionPaged',
     'ApplicationStackPaged',
+    'CsmOperationDescriptionPaged',
     'RecommendationPaged',
+    'ResourceHealthMetadataPaged',
     'SourceControlPaged',
     'BillingMeterPaged',
     'GeoRegionPaged',
     'IdentifierPaged',
     'PremierAddOnOfferPaged',
-    'SitePaged',
     'BackupItemPaged',
     'SiteConfigResourcePaged',
     'SiteConfigurationSnapshotInfoPaged',
@@ -824,8 +744,6 @@ __all__ = [
     'ProcessInfoPaged',
     'ProcessModuleInfoPaged',
     'ProcessThreadInfoPaged',
-    'ResourceMetricDefinitionPaged',
-    'ResourceMetricPaged',
     'PerfMonResponsePaged',
     'PublicCertificatePaged',
     'SiteExtensionInfoPaged',
@@ -833,22 +751,13 @@ __all__ = [
     'SnapshotPaged',
     'TriggeredWebJobPaged',
     'TriggeredJobHistoryPaged',
-    'CsmUsageQuotaPaged',
     'WebJobPaged',
-    'AppServiceEnvironmentResourcePaged',
-    'StampCapacityPaged',
-    'WorkerPoolResourcePaged',
-    'SkuInfoPaged',
-    'UsagePaged',
-    'AppServicePlanPaged',
-    'StrPaged',
-    'HybridConnectionPaged',
-    'ResourceHealthMetadataPaged',
-    'KeyVaultSecretStatus',
-    'CertificateProductType',
     'ProvisioningState',
-    'CertificateOrderStatus',
-    'CertificateOrderActionType',
+    'HostingEnvironmentStatus',
+    'InternalLoadBalancingMode',
+    'ComputeModeOptions',
+    'WorkerSizeOptions',
+    'AccessControlEntryAction',
     'RouteType',
     'ManagedServiceIdentityType',
     'IpFilterTag',
@@ -866,18 +775,8 @@ __all__ = [
     'UsageState',
     'SiteAvailabilityState',
     'StatusOptions',
-    'DomainStatus',
-    'AzureResourceType',
-    'CustomHostNameDnsRecordType',
-    'HostNameType',
-    'DnsType',
-    'DomainType',
-    'HostingEnvironmentStatus',
-    'InternalLoadBalancingMode',
-    'ComputeModeOptions',
-    'WorkerSizeOptions',
-    'AccessControlEntryAction',
     'OperationStatus',
+    'KeyVaultSecretStatus',
     'IssueType',
     'SolutionType',
     'RenderingType',
@@ -896,6 +795,9 @@ __all__ = [
     'WebJobType',
     'PublishingProfileFormat',
     'DnsVerificationTestResult',
+    'AzureResourceType',
+    'CustomHostNameDnsRecordType',
+    'HostNameType',
     'MSDeployLogEntryType',
     'MSDeployProvisioningState',
     'MySqlMigrationType',
