@@ -25,7 +25,7 @@ class AppServiceEnvironmentsOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: API Version. Constant value: "2018-02-01".
+    :ivar api_version: API Version. Constant value: "2051-04-04".
     """
 
     models = models
@@ -35,7 +35,7 @@ class AppServiceEnvironmentsOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-02-01"
+        self.api_version = "2051-04-04"
 
         self.config = config
 
