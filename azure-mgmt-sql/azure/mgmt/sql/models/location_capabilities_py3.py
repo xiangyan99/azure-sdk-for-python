@@ -23,10 +23,6 @@ class LocationCapabilities(Model):
     :ivar supported_server_versions: The list of supported server versions.
     :vartype supported_server_versions:
      list[~azure.mgmt.sql.models.ServerVersionCapability]
-    :ivar supported_managed_instance_versions: The list of supported managed
-     instance versions.
-    :vartype supported_managed_instance_versions:
-     list[~azure.mgmt.sql.models.ManagedInstanceVersionCapability]
     :ivar status: The status of the capability. Possible values include:
      'Visible', 'Available', 'Default', 'Disabled'
     :vartype status: str or ~azure.mgmt.sql.models.CapabilityStatus
@@ -37,14 +33,12 @@ class LocationCapabilities(Model):
     _validation = {
         'name': {'readonly': True},
         'supported_server_versions': {'readonly': True},
-        'supported_managed_instance_versions': {'readonly': True},
         'status': {'readonly': True},
     }
 
     _attribute_map = {
         'name': {'key': 'name', 'type': 'str'},
         'supported_server_versions': {'key': 'supportedServerVersions', 'type': '[ServerVersionCapability]'},
-        'supported_managed_instance_versions': {'key': 'supportedManagedInstanceVersions', 'type': '[ManagedInstanceVersionCapability]'},
         'status': {'key': 'status', 'type': 'CapabilityStatus'},
         'reason': {'key': 'reason', 'type': 'str'},
     }
@@ -53,6 +47,5 @@ class LocationCapabilities(Model):
         super(LocationCapabilities, self).__init__(**kwargs)
         self.name = None
         self.supported_server_versions = None
-        self.supported_managed_instance_versions = None
         self.status = None
         self.reason = reason

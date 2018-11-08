@@ -12,17 +12,18 @@
 from msrest.serialization import Model
 
 
-class LocationCapabilities(Model):
-    """The location capability.
+class ElasticPoolPerDatabaseMaxDtuCapability(Model):
+    """The max per-database DTU capability.
 
     Variables are only populated by the server, and will be ignored when
     sending a request.
 
-    :ivar name: The location name.
-    :vartype name: str
-    :ivar supported_server_versions: The list of supported server versions.
-    :vartype supported_server_versions:
-     list[~azure.mgmt.sql.models.ServerVersionCapability]
+    :ivar limit: The maximum DTUs per database.
+    :vartype limit: int
+    :ivar supported_per_database_min_dtus: The list of supported min database
+     DTUs.
+    :vartype supported_per_database_min_dtus:
+     list[~azure.mgmt.sql.models.ElasticPoolPerDatabaseMinDtuCapability]
     :ivar status: The status of the capability. Possible values include:
      'Visible', 'Available', 'Default', 'Disabled'
     :vartype status: str or ~azure.mgmt.sql.models.CapabilityStatus
@@ -31,21 +32,21 @@ class LocationCapabilities(Model):
     """
 
     _validation = {
-        'name': {'readonly': True},
-        'supported_server_versions': {'readonly': True},
+        'limit': {'readonly': True},
+        'supported_per_database_min_dtus': {'readonly': True},
         'status': {'readonly': True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'supported_server_versions': {'key': 'supportedServerVersions', 'type': '[ServerVersionCapability]'},
+        'limit': {'key': 'limit', 'type': 'int'},
+        'supported_per_database_min_dtus': {'key': 'supportedPerDatabaseMinDtus', 'type': '[ElasticPoolPerDatabaseMinDtuCapability]'},
         'status': {'key': 'status', 'type': 'CapabilityStatus'},
         'reason': {'key': 'reason', 'type': 'str'},
     }
 
-    def __init__(self, **kwargs):
-        super(LocationCapabilities, self).__init__(**kwargs)
-        self.name = None
-        self.supported_server_versions = None
+    def __init__(self, *, reason: str=None, **kwargs) -> None:
+        super(ElasticPoolPerDatabaseMaxDtuCapability, self).__init__(**kwargs)
+        self.limit = None
+        self.supported_per_database_min_dtus = None
         self.status = None
-        self.reason = kwargs.get('reason', None)
+        self.reason = reason

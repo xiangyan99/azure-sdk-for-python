@@ -23,10 +23,7 @@ class EditionCapability(Model):
     :ivar supported_service_level_objectives: The list of supported service
      objectives for the edition.
     :vartype supported_service_level_objectives:
-     list[~azure.mgmt.sql.models.ServiceObjectiveCapability]
-    :ivar zone_redundant: Whether or not zone redundancy is supported for the
-     edition.
-    :vartype zone_redundant: bool
+     list[~azure.mgmt.sql.models.ServiceLevelObjectiveCapability]
     :ivar status: The status of the capability. Possible values include:
      'Visible', 'Available', 'Default', 'Disabled'
     :vartype status: str or ~azure.mgmt.sql.models.CapabilityStatus
@@ -37,14 +34,12 @@ class EditionCapability(Model):
     _validation = {
         'name': {'readonly': True},
         'supported_service_level_objectives': {'readonly': True},
-        'zone_redundant': {'readonly': True},
         'status': {'readonly': True},
     }
 
     _attribute_map = {
         'name': {'key': 'name', 'type': 'str'},
-        'supported_service_level_objectives': {'key': 'supportedServiceLevelObjectives', 'type': '[ServiceObjectiveCapability]'},
-        'zone_redundant': {'key': 'zoneRedundant', 'type': 'bool'},
+        'supported_service_level_objectives': {'key': 'supportedServiceLevelObjectives', 'type': '[ServiceLevelObjectiveCapability]'},
         'status': {'key': 'status', 'type': 'CapabilityStatus'},
         'reason': {'key': 'reason', 'type': 'str'},
     }
@@ -53,6 +48,5 @@ class EditionCapability(Model):
         super(EditionCapability, self).__init__(**kwargs)
         self.name = None
         self.supported_service_level_objectives = None
-        self.zone_redundant = None
         self.status = None
         self.reason = reason
