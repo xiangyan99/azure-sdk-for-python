@@ -22,20 +22,30 @@ class MaxSizeCapability(Model):
     :vartype limit: int
     :ivar unit: The units that the limit is expressed in. Possible values
      include: 'Megabytes', 'Gigabytes', 'Terabytes', 'Petabytes'
-    :vartype unit: str or ~azure.mgmt.sql.models.MaxSizeUnit
+    :vartype unit: str or ~azure.mgmt.sql.models.MaxSizeUnits
+    :ivar status: The status of the capability. Possible values include:
+     'Visible', 'Available', 'Default', 'Disabled'
+    :vartype status: str or ~azure.mgmt.sql.models.CapabilityStatus
+    :param reason: The reason for the capability not being available.
+    :type reason: str
     """
 
     _validation = {
         'limit': {'readonly': True},
         'unit': {'readonly': True},
+        'status': {'readonly': True},
     }
 
     _attribute_map = {
         'limit': {'key': 'limit', 'type': 'int'},
-        'unit': {'key': 'unit', 'type': 'str'},
+        'unit': {'key': 'unit', 'type': 'MaxSizeUnits'},
+        'status': {'key': 'status', 'type': 'CapabilityStatus'},
+        'reason': {'key': 'reason', 'type': 'str'},
     }
 
-    def __init__(self, **kwargs) -> None:
+    def __init__(self, *, reason: str=None, **kwargs) -> None:
         super(MaxSizeCapability, self).__init__(**kwargs)
         self.limit = None
         self.unit = None
+        self.status = None
+        self.reason = reason

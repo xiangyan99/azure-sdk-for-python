@@ -19,9 +19,9 @@ class PerformanceLevelCapability(Model):
     sending a request.
 
     :ivar value: Performance level value.
-    :vartype value: float
-    :ivar unit: Unit type used to measure performance level. Possible values
-     include: 'DTU', 'VCores'
+    :vartype value: int
+    :ivar unit: Unit type used to measure service objective performance level.
+     Possible values include: 'DTU'
     :vartype unit: str or ~azure.mgmt.sql.models.PerformanceLevelUnit
     """
 
@@ -31,8 +31,8 @@ class PerformanceLevelCapability(Model):
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': 'float'},
-        'unit': {'key': 'unit', 'type': 'str'},
+        'value': {'key': 'value', 'type': 'int'},
+        'unit': {'key': 'unit', 'type': 'PerformanceLevelUnit'},
     }
 
     def __init__(self, **kwargs) -> None:

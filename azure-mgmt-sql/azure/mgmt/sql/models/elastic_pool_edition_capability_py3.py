@@ -20,13 +20,10 @@ class ElasticPoolEditionCapability(Model):
 
     :ivar name: The elastic pool edition name.
     :vartype name: str
-    :ivar supported_elastic_pool_performance_levels: The list of supported
-     elastic pool DTU levels for the edition.
-    :vartype supported_elastic_pool_performance_levels:
-     list[~azure.mgmt.sql.models.ElasticPoolPerformanceLevelCapability]
-    :ivar zone_redundant: Whether or not zone redundancy is supported for the
-     edition.
-    :vartype zone_redundant: bool
+    :ivar supported_elastic_pool_dtus: The list of supported elastic pool DTU
+     levels for the edition.
+    :vartype supported_elastic_pool_dtus:
+     list[~azure.mgmt.sql.models.ElasticPoolDtuCapability]
     :ivar status: The status of the capability. Possible values include:
      'Visible', 'Available', 'Default', 'Disabled'
     :vartype status: str or ~azure.mgmt.sql.models.CapabilityStatus
@@ -36,15 +33,13 @@ class ElasticPoolEditionCapability(Model):
 
     _validation = {
         'name': {'readonly': True},
-        'supported_elastic_pool_performance_levels': {'readonly': True},
-        'zone_redundant': {'readonly': True},
+        'supported_elastic_pool_dtus': {'readonly': True},
         'status': {'readonly': True},
     }
 
     _attribute_map = {
         'name': {'key': 'name', 'type': 'str'},
-        'supported_elastic_pool_performance_levels': {'key': 'supportedElasticPoolPerformanceLevels', 'type': '[ElasticPoolPerformanceLevelCapability]'},
-        'zone_redundant': {'key': 'zoneRedundant', 'type': 'bool'},
+        'supported_elastic_pool_dtus': {'key': 'supportedElasticPoolDtus', 'type': '[ElasticPoolDtuCapability]'},
         'status': {'key': 'status', 'type': 'CapabilityStatus'},
         'reason': {'key': 'reason', 'type': 'str'},
     }
@@ -52,7 +47,6 @@ class ElasticPoolEditionCapability(Model):
     def __init__(self, *, reason: str=None, **kwargs) -> None:
         super(ElasticPoolEditionCapability, self).__init__(**kwargs)
         self.name = None
-        self.supported_elastic_pool_performance_levels = None
-        self.zone_redundant = None
+        self.supported_elastic_pool_dtus = None
         self.status = None
         self.reason = reason
