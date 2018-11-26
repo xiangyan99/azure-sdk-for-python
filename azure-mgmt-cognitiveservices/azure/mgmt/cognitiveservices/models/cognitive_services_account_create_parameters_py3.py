@@ -17,14 +17,13 @@ class CognitiveServicesAccountCreateParameters(Model):
 
     All required parameters must be populated in order to send to Azure.
 
-    :param sku: Required. Required. Gets or sets the SKU of the resource.
+    :param sku: Required.
     :type sku: ~azure.mgmt.cognitiveservices.models.Sku
-    :param kind: Required. Required. Gets or sets the Kind of the resource.
-     Possible values include: 'Bing.Autosuggest.v7', 'Bing.CustomSearch',
-     'Bing.Search.v7', 'Bing.Speech', 'Bing.SpellCheck.v7', 'ComputerVision',
-     'ContentModerator', 'CustomSpeech', 'CustomVision.Prediction',
-     'CustomVision.Training', 'Emotion', 'Face', 'LUIS', 'QnAMaker',
-     'SpeakerRecognition', 'SpeechTranslation', 'TextAnalytics',
+    :param kind: Required. Required. Indicates the type of cognitive service
+     account. Possible values include: 'Academic', 'Bing.Autosuggest',
+     'Bing.Search', 'Bing.Speech', 'Bing.SpellCheck', 'ComputerVision',
+     'ContentModerator', 'Emotion', 'Face', 'LUIS', 'Recommendations',
+     'SpeakerRecognition', 'Speech', 'SpeechTranslation', 'TextAnalytics',
      'TextTranslation', 'WebLM'
     :type kind: str or ~azure.mgmt.cognitiveservices.models.Kind
     :param location: Required. Required. Gets or sets the location of the
@@ -39,8 +38,7 @@ class CognitiveServicesAccountCreateParameters(Model):
      resource. Each tag must have a key no greater than 128 characters and
      value no greater than 256 characters.
     :type tags: dict[str, str]
-    :param properties: Required. Must exist in the request. Must be an empty
-     object. Must not be null.
+    :param properties: Required. Must exist in the request. Must not be null.
     :type properties: object
     """
 

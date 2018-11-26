@@ -13,10 +13,7 @@ from msrest.service_client import SDKClient
 from msrest import Serializer, Deserializer
 from msrestazure import AzureConfiguration
 from .version import VERSION
-from .operations.accounts_operations import AccountsOperations
-from .operations.resource_skus_operations import ResourceSkusOperations
-from .operations.operations import Operations
-from .operations.check_sku_availability_operations import CheckSkuAvailabilityOperations
+from .operations.cognitive_services_accounts_operations import CognitiveServicesAccountsOperations
 from . import models
 
 
@@ -58,14 +55,8 @@ class CognitiveServicesManagementClient(SDKClient):
     :ivar config: Configuration for client.
     :vartype config: CognitiveServicesManagementClientConfiguration
 
-    :ivar accounts: Accounts operations
-    :vartype accounts: azure.mgmt.cognitiveservices.operations.AccountsOperations
-    :ivar resource_skus: ResourceSkus operations
-    :vartype resource_skus: azure.mgmt.cognitiveservices.operations.ResourceSkusOperations
-    :ivar operations: Operations operations
-    :vartype operations: azure.mgmt.cognitiveservices.operations.Operations
-    :ivar check_sku_availability: CheckSkuAvailability operations
-    :vartype check_sku_availability: azure.mgmt.cognitiveservices.operations.CheckSkuAvailabilityOperations
+    :ivar cognitive_services_accounts: CognitiveServicesAccounts operations
+    :vartype cognitive_services_accounts: azure.mgmt.cognitiveservices.operations.CognitiveServicesAccountsOperations
 
     :param credentials: Credentials needed for the client to connect to Azure.
     :type credentials: :mod:`A msrestazure Credentials
@@ -82,15 +73,9 @@ class CognitiveServicesManagementClient(SDKClient):
         super(CognitiveServicesManagementClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '2017-04-18'
+        self.api_version = '2020-03-01'
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.accounts = AccountsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.resource_skus = ResourceSkusOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.operations = Operations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.check_sku_availability = CheckSkuAvailabilityOperations(
+        self.cognitive_services_accounts = CognitiveServicesAccountsOperations(
             self._client, self.config, self._serialize, self._deserialize)

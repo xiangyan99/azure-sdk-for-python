@@ -9,14 +9,8 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from .accounts_operations import AccountsOperations
-from .resource_skus_operations import ResourceSkusOperations
-from .operations import Operations
-from .check_sku_availability_operations import CheckSkuAvailabilityOperations
+from .cognitive_services_accounts_operations import CognitiveServicesAccountsOperations
 
 __all__ = [
-    'AccountsOperations',
-    'ResourceSkusOperations',
-    'Operations',
-    'CheckSkuAvailabilityOperations',
+    'CognitiveServicesAccountsOperations',
 ]

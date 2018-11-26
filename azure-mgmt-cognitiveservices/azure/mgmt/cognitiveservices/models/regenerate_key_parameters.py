@@ -15,16 +15,10 @@ from msrest.serialization import Model
 class RegenerateKeyParameters(Model):
     """Regenerate key parameters.
 
-    All required parameters must be populated in order to send to Azure.
-
-    :param key_name: Required. key name to generate (Key1|Key2). Possible
-     values include: 'Key1', 'Key2'
+    :param key_name: key name to generate (Key1|Key2). Possible values
+     include: 'Key1', 'Key2'
     :type key_name: str or ~azure.mgmt.cognitiveservices.models.KeyName
     """
-
-    _validation = {
-        'key_name': {'required': True},
-    }
 
     _attribute_map = {
         'key_name': {'key': 'keyName', 'type': 'KeyName'},

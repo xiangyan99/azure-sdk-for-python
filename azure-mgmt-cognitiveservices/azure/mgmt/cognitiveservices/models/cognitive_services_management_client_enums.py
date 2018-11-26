@@ -36,21 +36,19 @@ class SkuTier(str, Enum):
 
 class Kind(str, Enum):
 
-    bing_autosuggestv7 = "Bing.Autosuggest.v7"
-    bing_custom_search = "Bing.CustomSearch"
-    bing_searchv7 = "Bing.Search.v7"
+    academic = "Academic"
+    bing_autosuggest = "Bing.Autosuggest"
+    bing_search = "Bing.Search"
     bing_speech = "Bing.Speech"
-    bing_spell_checkv7 = "Bing.SpellCheck.v7"
+    bing_spell_check = "Bing.SpellCheck"
     computer_vision = "ComputerVision"
     content_moderator = "ContentModerator"
-    custom_speech = "CustomSpeech"
-    custom_vision_prediction = "CustomVision.Prediction"
-    custom_vision_training = "CustomVision.Training"
     emotion = "Emotion"
     face = "Face"
     luis = "LUIS"
-    qn_amaker = "QnAMaker"
+    recommendations = "Recommendations"
     speaker_recognition = "SpeakerRecognition"
+    speech = "Speech"
     speech_translation = "SpeechTranslation"
     text_analytics = "TextAnalytics"
     text_translation = "TextTranslation"
@@ -61,8 +59,6 @@ class ProvisioningState(str, Enum):
 
     creating = "Creating"
     resolving_dns = "ResolvingDNS"
-    moving = "Moving"
-    deleting = "Deleting"
     succeeded = "Succeeded"
     failed = "Failed"
 
@@ -71,34 +67,3 @@ class KeyName(str, Enum):
 
     key1 = "Key1"
     key2 = "Key2"
-
-
-class UnitType(str, Enum):
-
-    count = "Count"
-    bytes = "Bytes"
-    seconds = "Seconds"
-    percent = "Percent"
-    count_per_second = "CountPerSecond"
-    bytes_per_second = "BytesPerSecond"
-    milliseconds = "Milliseconds"
-
-
-class QuotaUsageStatus(str, Enum):
-
-    included = "Included"
-    blocked = "Blocked"
-    in_overage = "InOverage"
-    unknown = "Unknown"
-
-
-class ResourceSkuRestrictionsType(str, Enum):
-
-    location = "Location"
-    zone = "Zone"
-
-
-class ResourceSkuRestrictionsReasonCode(str, Enum):
-
-    quota_id = "QuotaId"
-    not_available_for_subscription = "NotAvailableForSubscription"

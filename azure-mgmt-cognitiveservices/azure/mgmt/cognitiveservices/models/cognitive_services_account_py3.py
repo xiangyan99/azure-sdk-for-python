@@ -21,24 +21,22 @@ class CognitiveServicesAccount(Model):
 
     :param etag: Entity Tag
     :type etag: str
-    :ivar id: The id of the created account
-    :vartype id: str
+    :param id: The id of the created account
+    :type id: str
     :param kind: Type of cognitive service account.
     :type kind: str
     :param location: The location of the resource
     :type location: str
-    :ivar name: The name of the created account
-    :vartype name: str
+    :param name: The name of the created account
+    :type name: str
     :ivar provisioning_state: Gets the status of the cognitive services
      account at the time the operation was called. Possible values include:
-     'Creating', 'ResolvingDNS', 'Moving', 'Deleting', 'Succeeded', 'Failed'
+     'Creating', 'ResolvingDNS', 'Succeeded', 'Failed'
     :vartype provisioning_state: str or
      ~azure.mgmt.cognitiveservices.models.ProvisioningState
-    :param endpoint: Endpoint of the created account.
+    :param endpoint: Endpoint of the created account
     :type endpoint: str
-    :param internal_id: The internal identifier.
-    :type internal_id: str
-    :param sku: The SKU of Cognitive Services account.
+    :param sku:
     :type sku: ~azure.mgmt.cognitiveservices.models.Sku
     :param tags: Gets or sets a list of key value pairs that describe the
      resource. These tags can be used in viewing and grouping this resource
@@ -46,15 +44,12 @@ class CognitiveServicesAccount(Model):
      resource. Each tag must have a key no greater than 128 characters and
      value no greater than 256 characters.
     :type tags: dict[str, str]
-    :ivar type: Resource type
-    :vartype type: str
+    :param type: Resource type
+    :type type: str
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
         'provisioning_state': {'readonly': True},
-        'type': {'readonly': True},
     }
 
     _attribute_map = {
@@ -63,24 +58,22 @@ class CognitiveServicesAccount(Model):
         'kind': {'key': 'kind', 'type': 'str'},
         'location': {'key': 'location', 'type': 'str'},
         'name': {'key': 'name', 'type': 'str'},
-        'provisioning_state': {'key': 'properties.provisioningState', 'type': 'str'},
+        'provisioning_state': {'key': 'properties.provisioningState', 'type': 'ProvisioningState'},
         'endpoint': {'key': 'properties.endpoint', 'type': 'str'},
-        'internal_id': {'key': 'properties.internalId', 'type': 'str'},
         'sku': {'key': 'sku', 'type': 'Sku'},
         'tags': {'key': 'tags', 'type': '{str}'},
         'type': {'key': 'type', 'type': 'str'},
     }
 
-    def __init__(self, *, etag: str=None, kind: str=None, location: str=None, endpoint: str=None, internal_id: str=None, sku=None, tags=None, **kwargs) -> None:
+    def __init__(self, *, etag: str=None, id: str=None, kind: str=None, location: str=None, name: str=None, endpoint: str=None, sku=None, tags=None, type: str=None, **kwargs) -> None:
         super(CognitiveServicesAccount, self).__init__(**kwargs)
         self.etag = etag
-        self.id = None
+        self.id = id
         self.kind = kind
         self.location = location
-        self.name = None
+        self.name = name
         self.provisioning_state = None
         self.endpoint = endpoint
-        self.internal_id = internal_id
         self.sku = sku
         self.tags = tags
-        self.type = None
+        self.type = type

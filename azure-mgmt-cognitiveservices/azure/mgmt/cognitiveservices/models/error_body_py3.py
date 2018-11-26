@@ -13,7 +13,7 @@ from msrest.serialization import Model
 
 
 class ErrorBody(Model):
-    """Cognitive Services error body.
+    """ErrorBody.
 
     All required parameters must be populated in order to send to Azure.
 
