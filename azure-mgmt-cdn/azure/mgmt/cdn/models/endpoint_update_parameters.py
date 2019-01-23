@@ -24,7 +24,7 @@ class EndpointUpdateParameters(Model):
      default.
     :type origin_host_header: str
     :param origin_path: A directory path on the origin that CDN can use to
-     retreive content from, e.g. contoso.cloudapp.net/originpath.
+     retrieve content from, e.g. contoso.cloudapp.net/originpath.
     :type origin_path: str
     :param content_types_to_compress: List of content types on which
      compression applies. The value should be a valid MIME type.
@@ -62,13 +62,9 @@ class EndpointUpdateParameters(Model):
      routes for the CDN. This is relative to the origin path.
     :type probe_path: str
     :param geo_filters: List of rules defining the user's geo access within a
-     CDN endpoint. Each geo filter defines an acess rule to a specified path or
-     content, e.g. block APAC for path /pictures/
+     CDN endpoint. Each geo filter defines an access rule to a specified path
+     or content, e.g. block APAC for path /pictures/
     :type geo_filters: list[~azure.mgmt.cdn.models.GeoFilter]
-    :param delivery_policy: A policy that specifies the delivery rules to be
-     used for an endpoint.
-    :type delivery_policy:
-     ~azure.mgmt.cdn.models.EndpointPropertiesUpdateParametersDeliveryPolicy
     """
 
     _attribute_map = {
@@ -83,7 +79,6 @@ class EndpointUpdateParameters(Model):
         'optimization_type': {'key': 'properties.optimizationType', 'type': 'str'},
         'probe_path': {'key': 'properties.probePath', 'type': 'str'},
         'geo_filters': {'key': 'properties.geoFilters', 'type': '[GeoFilter]'},
-        'delivery_policy': {'key': 'properties.deliveryPolicy', 'type': 'EndpointPropertiesUpdateParametersDeliveryPolicy'},
     }
 
     def __init__(self, **kwargs):
@@ -99,4 +94,3 @@ class EndpointUpdateParameters(Model):
         self.optimization_type = kwargs.get('optimization_type', None)
         self.probe_path = kwargs.get('probe_path', None)
         self.geo_filters = kwargs.get('geo_filters', None)
-        self.delivery_policy = kwargs.get('delivery_policy', None)
