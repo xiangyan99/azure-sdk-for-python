@@ -18,17 +18,7 @@ try:
     from .deep_created_origin_py3 import DeepCreatedOrigin
     from .endpoint_py3 import Endpoint
     from .geo_filter_py3 import GeoFilter
-    from .delivery_rule_action_py3 import DeliveryRuleAction
-    from .delivery_rule_condition_py3 import DeliveryRuleCondition
-    from .delivery_rule_py3 import DeliveryRule
-    from .endpoint_properties_update_parameters_delivery_policy_py3 import EndpointPropertiesUpdateParametersDeliveryPolicy
     from .endpoint_update_parameters_py3 import EndpointUpdateParameters
-    from .url_path_condition_parameters_py3 import UrlPathConditionParameters
-    from .delivery_rule_url_path_condition_py3 import DeliveryRuleUrlPathCondition
-    from .url_file_extension_condition_parameters_py3 import UrlFileExtensionConditionParameters
-    from .delivery_rule_url_file_extension_condition_py3 import DeliveryRuleUrlFileExtensionCondition
-    from .cache_expiration_action_parameters_py3 import CacheExpirationActionParameters
-    from .delivery_rule_cache_expiration_action_py3 import DeliveryRuleCacheExpirationAction
     from .purge_parameters_py3 import PurgeParameters
     from .load_parameters_py3 import LoadParameters
     from .origin_py3 import Origin
@@ -60,17 +50,7 @@ except (SyntaxError, ImportError):
     from .deep_created_origin import DeepCreatedOrigin
     from .endpoint import Endpoint
     from .geo_filter import GeoFilter
-    from .delivery_rule_action import DeliveryRuleAction
-    from .delivery_rule_condition import DeliveryRuleCondition
-    from .delivery_rule import DeliveryRule
-    from .endpoint_properties_update_parameters_delivery_policy import EndpointPropertiesUpdateParametersDeliveryPolicy
     from .endpoint_update_parameters import EndpointUpdateParameters
-    from .url_path_condition_parameters import UrlPathConditionParameters
-    from .delivery_rule_url_path_condition import DeliveryRuleUrlPathCondition
-    from .url_file_extension_condition_parameters import UrlFileExtensionConditionParameters
-    from .delivery_rule_url_file_extension_condition import DeliveryRuleUrlFileExtensionCondition
-    from .cache_expiration_action_parameters import CacheExpirationActionParameters
-    from .delivery_rule_cache_expiration_action import DeliveryRuleCacheExpirationAction
     from .purge_parameters import PurgeParameters
     from .load_parameters import LoadParameters
     from .origin import Origin
@@ -123,17 +103,7 @@ __all__ = [
     'DeepCreatedOrigin',
     'Endpoint',
     'GeoFilter',
-    'DeliveryRuleAction',
-    'DeliveryRuleCondition',
-    'DeliveryRule',
-    'EndpointPropertiesUpdateParametersDeliveryPolicy',
     'EndpointUpdateParameters',
-    'UrlPathConditionParameters',
-    'DeliveryRuleUrlPathCondition',
-    'UrlFileExtensionConditionParameters',
-    'DeliveryRuleUrlFileExtensionCondition',
-    'CacheExpirationActionParameters',
-    'DeliveryRuleCacheExpirationAction',
     'PurgeParameters',
     'LoadParameters',
     'Origin',
