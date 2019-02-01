@@ -24,7 +24,7 @@ class StreamingEndpointsOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: The Version of the API to be used with the client request. Constant value: "2018-07-01".
+    :ivar api_version: The Version of the API to be used with the client request. Constant value: "1919-09-12-preview".
     """
 
     models = models
@@ -34,7 +34,7 @@ class StreamingEndpointsOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-07-01"
+        self.api_version = "1919-09-12-preview"
 
         self.config = config
 
@@ -245,8 +245,7 @@ class StreamingEndpointsOperations(object):
         :type streaming_endpoint_name: str
         :param parameters: StreamingEndpoint properties needed for creation.
         :type parameters: ~azure.mgmt.media.models.StreamingEndpoint
-        :param auto_start: The flag indicates if the resource should be
-         automatically started on creation.
+        :param auto_start: The flag indicates if auto start the Live Event.
         :type auto_start: bool
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: The poller return type is ClientRawResponse, the
@@ -710,7 +709,8 @@ class StreamingEndpointsOperations(object):
         :type account_name: str
         :param streaming_endpoint_name: The name of the StreamingEndpoint.
         :type streaming_endpoint_name: str
-        :param scale_unit: The scale unit number of the StreamingEndpoint.
+        :param scale_unit: ScaleUnit The scale unit number of the
+         StreamingEndpoint.
         :type scale_unit: int
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: The poller return type is ClientRawResponse, the

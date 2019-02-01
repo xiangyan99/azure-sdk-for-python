@@ -53,9 +53,9 @@ class H264Video(Video):
         'label': {'key': 'label', 'type': 'str'},
         'odatatype': {'key': '@odata\\.type', 'type': 'str'},
         'key_frame_interval': {'key': 'keyFrameInterval', 'type': 'duration'},
-        'stretch_mode': {'key': 'stretchMode', 'type': 'str'},
+        'stretch_mode': {'key': 'stretchMode', 'type': 'StretchMode'},
         'scene_change_detection': {'key': 'sceneChangeDetection', 'type': 'bool'},
-        'complexity': {'key': 'complexity', 'type': 'str'},
+        'complexity': {'key': 'complexity', 'type': 'H264Complexity'},
         'layers': {'key': 'layers', 'type': '[H264Layer]'},
     }
 

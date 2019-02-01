@@ -22,7 +22,7 @@ class LocationsOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: The Version of the API to be used with the client request. Constant value: "2018-07-01".
+    :ivar api_version: The Version of the API to be used with the client request. Constant value: "1919-09-12-preview".
     """
 
     models = models
@@ -32,7 +32,7 @@ class LocationsOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-07-01"
+        self.api_version = "1919-09-12-preview"
 
         self.config = config
 
@@ -42,7 +42,7 @@ class LocationsOperations(object):
 
         Checks whether the Media Service resource name is available.
 
-        :param location_name: The name of the location
+        :param location_name:
         :type location_name: str
         :param name: The account name.
         :type name: str
