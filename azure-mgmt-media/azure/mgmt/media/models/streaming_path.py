@@ -35,8 +35,8 @@ class StreamingPath(Model):
     }
 
     _attribute_map = {
-        'streaming_protocol': {'key': 'streamingProtocol', 'type': 'str'},
-        'encryption_scheme': {'key': 'encryptionScheme', 'type': 'str'},
+        'streaming_protocol': {'key': 'streamingProtocol', 'type': 'StreamingPolicyStreamingProtocol'},
+        'encryption_scheme': {'key': 'encryptionScheme', 'type': 'EncryptionScheme'},
         'paths': {'key': 'paths', 'type': '[str]'},
     }
 

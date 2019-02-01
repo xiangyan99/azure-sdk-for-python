@@ -34,7 +34,7 @@ class StorageAccount(Model):
 
     _attribute_map = {
         'id': {'key': 'id', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
+        'type': {'key': 'type', 'type': 'StorageAccountType'},
     }
 
     def __init__(self, **kwargs):

@@ -19,8 +19,7 @@ class ContentKeyPolicyFairPlayConfiguration(ContentKeyPolicyConfiguration):
 
     :param odatatype: Required. Constant filled by server.
     :type odatatype: str
-    :param ask: Required. The key that must be used as FairPlay Application
-     Secret key.
+    :param ask: Required. The key that must be used as FairPlay ASk.
     :type ask: bytearray
     :param fair_play_pfx_password: Required. The password encrypting FairPlay
      certificate in PKCS 12 (pfx) format.
@@ -52,7 +51,7 @@ class ContentKeyPolicyFairPlayConfiguration(ContentKeyPolicyConfiguration):
         'ask': {'key': 'ask', 'type': 'bytearray'},
         'fair_play_pfx_password': {'key': 'fairPlayPfxPassword', 'type': 'str'},
         'fair_play_pfx': {'key': 'fairPlayPfx', 'type': 'str'},
-        'rental_and_lease_key_type': {'key': 'rentalAndLeaseKeyType', 'type': 'str'},
+        'rental_and_lease_key_type': {'key': 'rentalAndLeaseKeyType', 'type': 'ContentKeyPolicyFairPlayRentalAndLeaseKeyType'},
         'rental_duration': {'key': 'rentalDuration', 'type': 'long'},
     }
 

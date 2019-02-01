@@ -47,11 +47,9 @@ class LiveEvent(TrackedResource):
     :param cross_site_access_policies: The Live Event access policies.
     :type cross_site_access_policies:
      ~azure.mgmt.media.models.CrossSiteAccessPolicies
-    :param vanity_url: Specifies whether to use a vanity url with the Live
-     Event.  This value is specified at creation time and cannot be updated.
+    :param vanity_url: The Live Event vanity URL flag.
     :type vanity_url: bool
-    :param stream_options: The options to use for the LiveEvent.  This value
-     is specified at creation time and cannot be updated.
+    :param stream_options: The stream options.
     :type stream_options: list[str or
      ~azure.mgmt.media.models.StreamOptionsFlag]
     :ivar created: The exact time the Live Event was created.

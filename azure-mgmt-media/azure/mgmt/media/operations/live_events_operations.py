@@ -24,7 +24,7 @@ class LiveEventsOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: The Version of the API to be used with the client request. Constant value: "2018-07-01".
+    :ivar api_version: The Version of the API to be used with the client request. Constant value: "1919-09-12-preview".
     """
 
     models = models
@@ -34,7 +34,7 @@ class LiveEventsOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-07-01"
+        self.api_version = "1919-09-12-preview"
 
         self.config = config
 
@@ -245,8 +245,7 @@ class LiveEventsOperations(object):
         :type live_event_name: str
         :param parameters: Live Event properties needed for creation.
         :type parameters: ~azure.mgmt.media.models.LiveEvent
-        :param auto_start: The flag indicates if the resource should be
-         automatically started on creation.
+        :param auto_start: The flag indicates if auto start the Live Event.
         :type auto_start: bool
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: The poller return type is ClientRawResponse, the

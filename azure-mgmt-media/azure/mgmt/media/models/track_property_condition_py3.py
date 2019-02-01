@@ -34,8 +34,8 @@ class TrackPropertyCondition(Model):
     }
 
     _attribute_map = {
-        'property': {'key': 'property', 'type': 'str'},
-        'operation': {'key': 'operation', 'type': 'str'},
+        'property': {'key': 'property', 'type': 'TrackPropertyType'},
+        'operation': {'key': 'operation', 'type': 'TrackPropertyCompareOperation'},
         'value': {'key': 'value', 'type': 'str'},
     }
 

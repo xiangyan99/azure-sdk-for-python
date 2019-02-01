@@ -96,11 +96,11 @@ class H264Layer(VideoLayer):
         'frame_rate': {'key': 'frameRate', 'type': 'str'},
         'slices': {'key': 'slices', 'type': 'int'},
         'adaptive_bframe': {'key': 'adaptiveBFrame', 'type': 'bool'},
-        'profile': {'key': 'profile', 'type': 'str'},
+        'profile': {'key': 'profile', 'type': 'H264VideoProfile'},
         'level': {'key': 'level', 'type': 'str'},
         'buffer_window': {'key': 'bufferWindow', 'type': 'duration'},
         'reference_frames': {'key': 'referenceFrames', 'type': 'int'},
-        'entropy_mode': {'key': 'entropyMode', 'type': 'str'},
+        'entropy_mode': {'key': 'entropyMode', 'type': 'EntropyMode'},
     }
 
     def __init__(self, **kwargs):
