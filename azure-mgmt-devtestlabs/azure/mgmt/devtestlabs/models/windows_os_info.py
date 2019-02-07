@@ -15,9 +15,8 @@ from msrest.serialization import Model
 class WindowsOsInfo(Model):
     """Information about a Windows OS.
 
-    :param windows_os_state: The state of the Windows OS (i.e. NonSysprepped,
-     SysprepRequested, SysprepApplied). Possible values include:
-     'NonSysprepped', 'SysprepRequested', 'SysprepApplied'
+    :param windows_os_state: The state of the Windows OS. Possible values
+     include: 'NonSysprepped', 'SysprepRequested', 'SysprepApplied'
     :type windows_os_state: str or
      ~azure.mgmt.devtestlabs.models.WindowsOsState
     """
@@ -26,6 +25,6 @@ class WindowsOsInfo(Model):
         'windows_os_state': {'key': 'windowsOsState', 'type': 'str'},
     }
 
-    def __init__(self, windows_os_state=None):
-        super(WindowsOsInfo, self).__init__()
-        self.windows_os_state = windows_os_state
+    def __init__(self, **kwargs):
+        super(WindowsOsInfo, self).__init__(**kwargs)
+        self.windows_os_state = kwargs.get('windows_os_state', None)
