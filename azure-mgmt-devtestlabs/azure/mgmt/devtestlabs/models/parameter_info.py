@@ -13,11 +13,11 @@ from msrest.serialization import Model
 
 
 class ParameterInfo(Model):
-    """Information about an artifact's parameter.
+    """ParameterInfo.
 
-    :param name: The name of the artifact parameter.
+    :param name:
     :type name: str
-    :param value: The value of the artifact parameter.
+    :param value:
     :type value: str
     """
 
@@ -26,7 +26,7 @@ class ParameterInfo(Model):
         'value': {'key': 'value', 'type': 'str'},
     }
 
-    def __init__(self, name=None, value=None):
-        super(ParameterInfo, self).__init__()
-        self.name = name
-        self.value = value
+    def __init__(self, **kwargs):
+        super(ParameterInfo, self).__init__(**kwargs)
+        self.name = kwargs.get('name', None)
+        self.value = kwargs.get('value', None)

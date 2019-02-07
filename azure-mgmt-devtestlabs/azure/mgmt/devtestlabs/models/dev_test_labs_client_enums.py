@@ -12,185 +12,92 @@
 from enum import Enum
 
 
-class EnableStatus(Enum):
-
-    enabled = "Enabled"
-    disabled = "Disabled"
-
-
-class NotificationStatus(Enum):
-
-    disabled = "Disabled"
-    enabled = "Enabled"
-
-
-class SourceControlType(Enum):
+class SourceControlType(str, Enum):
 
     vso_git = "VsoGit"
     git_hub = "GitHub"
 
 
-class StorageType(Enum):
-
-    standard = "Standard"
-    premium = "Premium"
-
-
-class CostThresholdStatus(Enum):
+class EnableStatus(str, Enum):
 
     enabled = "Enabled"
     disabled = "Disabled"
 
 
-class WindowsOsState(Enum):
-
-    non_sysprepped = "NonSysprepped"
-    sysprep_requested = "SysprepRequested"
-    sysprep_applied = "SysprepApplied"
-
-
-class LinuxOsState(Enum):
-
-    non_deprovisioned = "NonDeprovisioned"
-    deprovision_requested = "DeprovisionRequested"
-    deprovision_applied = "DeprovisionApplied"
-
-
-class CustomImageOsType(Enum):
-
-    windows = "Windows"
-    linux = "Linux"
-    none = "None"
-
-
-class HostCachingOptions(Enum):
-
-    none = "None"
-    read_only = "ReadOnly"
-    read_write = "ReadWrite"
-
-
-class NotificationChannelEventType(Enum):
-
-    auto_shutdown = "AutoShutdown"
-    cost = "Cost"
-
-
-class TransportProtocol(Enum):
-
-    tcp = "Tcp"
-    udp = "Udp"
-
-
-class VirtualMachineCreationSource(Enum):
-
-    from_custom_image = "FromCustomImage"
-    from_gallery_image = "FromGalleryImage"
-
-
-class FileUploadOptions(Enum):
-
-    upload_files_and_generate_sas_tokens = "UploadFilesAndGenerateSasTokens"
-    none = "None"
-
-
-class PremiumDataDisk(Enum):
-
-    disabled = "Disabled"
-    enabled = "Enabled"
-
-
-class TargetCostStatus(Enum):
-
-    enabled = "Enabled"
-    disabled = "Disabled"
-
-
-class ReportingCycleType(Enum):
-
-    calendar_month = "CalendarMonth"
-    custom = "Custom"
-
-
-class CostType(Enum):
+class CostPropertyType(str, Enum):
 
     unavailable = "Unavailable"
     reported = "Reported"
     projected = "Projected"
 
 
-class HttpStatusCode(Enum):
+class WindowsOsState(str, Enum):
 
-    continue_enum = "Continue"
-    switching_protocols = "SwitchingProtocols"
-    ok = "OK"
-    created = "Created"
-    accepted = "Accepted"
-    non_authoritative_information = "NonAuthoritativeInformation"
-    no_content = "NoContent"
-    reset_content = "ResetContent"
-    partial_content = "PartialContent"
-    multiple_choices = "MultipleChoices"
-    moved_permanently = "MovedPermanently"
-    redirect = "Redirect"
-    see_other = "SeeOther"
-    not_modified = "NotModified"
-    use_proxy = "UseProxy"
-    unused = "Unused"
-    temporary_redirect = "TemporaryRedirect"
-    bad_request = "BadRequest"
-    unauthorized = "Unauthorized"
-    payment_required = "PaymentRequired"
-    forbidden = "Forbidden"
-    not_found = "NotFound"
-    method_not_allowed = "MethodNotAllowed"
-    not_acceptable = "NotAcceptable"
-    proxy_authentication_required = "ProxyAuthenticationRequired"
-    request_timeout = "RequestTimeout"
-    conflict = "Conflict"
-    gone = "Gone"
-    length_required = "LengthRequired"
-    precondition_failed = "PreconditionFailed"
-    request_entity_too_large = "RequestEntityTooLarge"
-    request_uri_too_long = "RequestUriTooLong"
-    unsupported_media_type = "UnsupportedMediaType"
-    requested_range_not_satisfiable = "RequestedRangeNotSatisfiable"
-    expectation_failed = "ExpectationFailed"
-    upgrade_required = "UpgradeRequired"
-    internal_server_error = "InternalServerError"
-    not_implemented = "NotImplemented"
-    bad_gateway = "BadGateway"
-    service_unavailable = "ServiceUnavailable"
-    gateway_timeout = "GatewayTimeout"
-    http_version_not_supported = "HttpVersionNotSupported"
+    non_sysprepped = "NonSysprepped"
+    sysprep_requested = "SysprepRequested"
+    sysprep_applied = "SysprepApplied"
 
 
-class PolicyStatus(Enum):
+class LinuxOsState(str, Enum):
+
+    non_deprovisioned = "NonDeprovisioned"
+    deprovision_requested = "DeprovisionRequested"
+    deprovision_applied = "DeprovisionApplied"
+
+
+class CustomImageOsType(str, Enum):
+
+    windows = "Windows"
+    linux = "Linux"
+    none = "None"
+
+
+class LabStorageType(str, Enum):
+
+    standard = "Standard"
+    premium = "Premium"
+
+
+class PolicyStatus(str, Enum):
 
     enabled = "Enabled"
     disabled = "Disabled"
 
 
-class PolicyFactName(Enum):
+class PolicyFactName(str, Enum):
 
     user_owned_lab_vm_count = "UserOwnedLabVmCount"
-    user_owned_lab_premium_vm_count = "UserOwnedLabPremiumVmCount"
     lab_vm_count = "LabVmCount"
-    lab_premium_vm_count = "LabPremiumVmCount"
     lab_vm_size = "LabVmSize"
     gallery_image = "GalleryImage"
     user_owned_lab_vm_count_in_subnet = "UserOwnedLabVmCountInSubnet"
-    lab_target_cost = "LabTargetCost"
 
 
-class PolicyEvaluatorType(Enum):
+class PolicyEvaluatorType(str, Enum):
 
     allowed_values_policy = "AllowedValuesPolicy"
     max_value_policy = "MaxValuePolicy"
 
 
-class UsagePermissionType(Enum):
+class TaskType(str, Enum):
+
+    lab_vms_shutdown_task = "LabVmsShutdownTask"
+    lab_vms_startup_task = "LabVmsStartupTask"
+    lab_billing_task = "LabBillingTask"
+
+
+class UsagePermissionType(str, Enum):
 
     default = "Default"
     deny = "Deny"
     allow = "Allow"
+
+
+class SubscriptionNotificationState(str, Enum):
+
+    not_defined = "NotDefined"
+    registered = "Registered"
+    unregistered = "Unregistered"
+    warned = "Warned"
+    suspended = "Suspended"
+    deleted = "Deleted"

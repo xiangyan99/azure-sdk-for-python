@@ -17,6 +17,8 @@ class CustomImagePropertiesFromVm(Model):
 
     :param source_vm_id: The source vm identifier.
     :type source_vm_id: str
+    :param sys_prep: Indicates whether sysprep has been run on the VHD.
+    :type sys_prep: bool
     :param windows_os_info: The Windows OS information of the VM.
     :type windows_os_info: ~azure.mgmt.devtestlabs.models.WindowsOsInfo
     :param linux_os_info: The Linux OS information of the VM.
@@ -25,12 +27,14 @@ class CustomImagePropertiesFromVm(Model):
 
     _attribute_map = {
         'source_vm_id': {'key': 'sourceVmId', 'type': 'str'},
+        'sys_prep': {'key': 'sysPrep', 'type': 'bool'},
         'windows_os_info': {'key': 'windowsOsInfo', 'type': 'WindowsOsInfo'},
         'linux_os_info': {'key': 'linuxOsInfo', 'type': 'LinuxOsInfo'},
     }
 
-    def __init__(self, source_vm_id=None, windows_os_info=None, linux_os_info=None):
-        super(CustomImagePropertiesFromVm, self).__init__()
-        self.source_vm_id = source_vm_id
-        self.windows_os_info = windows_os_info
-        self.linux_os_info = linux_os_info
+    def __init__(self, **kwargs):
+        super(CustomImagePropertiesFromVm, self).__init__(**kwargs)
+        self.source_vm_id = kwargs.get('source_vm_id', None)
+        self.sys_prep = kwargs.get('sys_prep', None)
+        self.windows_os_info = kwargs.get('windows_os_info', None)
+        self.linux_os_info = kwargs.get('linux_os_info', None)

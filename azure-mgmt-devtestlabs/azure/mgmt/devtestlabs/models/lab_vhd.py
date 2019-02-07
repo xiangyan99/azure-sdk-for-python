@@ -15,7 +15,7 @@ from msrest.serialization import Model
 class LabVhd(Model):
     """Properties of a VHD in the lab.
 
-    :param id: The URI to the VHD.
+    :param id: The absolute URI of the VHD.
     :type id: str
     """
 
@@ -23,6 +23,6 @@ class LabVhd(Model):
         'id': {'key': 'id', 'type': 'str'},
     }
 
-    def __init__(self, id=None):
-        super(LabVhd, self).__init__()
-        self.id = id
+    def __init__(self, **kwargs):
+        super(LabVhd, self).__init__(**kwargs)
+        self.id = kwargs.get('id', None)
