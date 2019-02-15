@@ -188,19 +188,19 @@ class ApplicationGatewayFirewallMode(str, Enum):
     prevention = "Prevention"
 
 
-class EnabledState(str, Enum):
+class WebApplicationFirewallEnabledState(str, Enum):
 
     disabled = "Disabled"
     enabled = "Enabled"
 
 
-class Mode(str, Enum):
+class WebApplicationFirewallMode(str, Enum):
 
     prevention = "Prevention"
     detection = "Detection"
 
 
-class MatchVariable(str, Enum):
+class WebApplicationFirewallMatchVariable(str, Enum):
 
     remote_addr = "RemoteAddr"
     request_method = "RequestMethod"
@@ -212,7 +212,7 @@ class MatchVariable(str, Enum):
     request_cookies = "RequestCookies"
 
 
-class Operator(str, Enum):
+class WebApplicationFirewallOperator(str, Enum):
 
     ip_match = "IPMatch"
     equal = "Equal"
@@ -226,7 +226,7 @@ class Operator(str, Enum):
     regex = "Regex"
 
 
-class Transform(str, Enum):
+class WebApplicationFirewallTransform(str, Enum):
 
     lowercase = "Lowercase"
     trim = "Trim"
@@ -236,7 +236,7 @@ class Transform(str, Enum):
     html_entity_decode = "HtmlEntityDecode"
 
 
-class Action(str, Enum):
+class WebApplicationFirewallAction(str, Enum):
 
     allow = "Allow"
     block = "Block"

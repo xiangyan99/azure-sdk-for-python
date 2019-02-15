@@ -19,18 +19,19 @@ class MatchCondition(Model):
 
     :param match_variables: Required. List of match variables
     :type match_variables:
-     list[~azure.mgmt.network.v2018_12_01.models.MatchVariable1]
+     list[~azure.mgmt.network.v2018_12_01.models.MatchVariable]
     :param operator: Required. Describes operator to be matched. Possible
      values include: 'IPMatch', 'Equal', 'Contains', 'LessThan', 'GreaterThan',
      'LessThanOrEqual', 'GreaterThanOrEqual', 'BeginsWith', 'EndsWith', 'Regex'
-    :type operator: str or ~azure.mgmt.network.v2018_12_01.models.Operator
+    :type operator: str or
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallOperator
     :param negate_condition: Describes if this is negate condition or not
     :type negate_condition: bool
     :param match_values: Required. Match value
     :type match_values: list[str]
     :param transforms: List of transforms
     :type transforms: list[str or
-     ~azure.mgmt.network.v2018_12_01.models.Transform]
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallTransform]
     """
 
     _validation = {
@@ -40,7 +41,7 @@ class MatchCondition(Model):
     }
 
     _attribute_map = {
-        'match_variables': {'key': 'matchVariables', 'type': '[MatchVariable1]'},
+        'match_variables': {'key': 'matchVariables', 'type': '[MatchVariable]'},
         'operator': {'key': 'operator', 'type': 'str'},
         'negate_condition': {'key': 'negateCondition', 'type': 'bool'},
         'match_values': {'key': 'matchValues', 'type': '[str]'},

@@ -12,7 +12,7 @@
 from msrest.serialization import Model
 
 
-class MatchVariable1(Model):
+class MatchVariable(Model):
     """Define match variables.
 
     All required parameters must be populated in order to send to Azure.
@@ -20,7 +20,8 @@ class MatchVariable1(Model):
     :param name: Required. Match Variable. Possible values include:
      'RemoteAddr', 'RequestMethod', 'QueryString', 'PostArgs', 'RequestUri',
      'RequestHeaders', 'RequestBody', 'RequestCookies'
-    :type name: str or ~azure.mgmt.network.v2018_12_01.models.MatchVariable
+    :type name: str or
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallMatchVariable
     :param selector: Describes field of the matchVariable collection
     :type selector: str
     """
@@ -34,7 +35,7 @@ class MatchVariable1(Model):
         'selector': {'key': 'selector', 'type': 'str'},
     }
 
-    def __init__(self, **kwargs):
-        super(MatchVariable1, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.selector = kwargs.get('selector', None)
+    def __init__(self, *, name, selector: str=None, **kwargs) -> None:
+        super(MatchVariable, self).__init__(**kwargs)
+        self.name = name
+        self.selector = selector

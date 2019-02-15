@@ -73,7 +73,7 @@ try:
     from .application_gateway_firewall_exclusion_py3 import ApplicationGatewayFirewallExclusion
     from .application_gateway_web_application_firewall_configuration_py3 import ApplicationGatewayWebApplicationFirewallConfiguration
     from .policy_settings_py3 import PolicySettings
-    from .match_variable1_py3 import MatchVariable1
+    from .match_variable_py3 import MatchVariable
     from .match_condition_py3 import MatchCondition
     from .custom_rule_py3 import CustomRule
     from .custom_rules_py3 import CustomRules
@@ -366,7 +366,7 @@ except (SyntaxError, ImportError):
     from .application_gateway_firewall_exclusion import ApplicationGatewayFirewallExclusion
     from .application_gateway_web_application_firewall_configuration import ApplicationGatewayWebApplicationFirewallConfiguration
     from .policy_settings import PolicySettings
-    from .match_variable1 import MatchVariable1
+    from .match_variable import MatchVariable
     from .match_condition import MatchCondition
     from .custom_rule import CustomRule
     from .custom_rules import CustomRules
@@ -681,12 +681,12 @@ from .network_management_client_enums import (
     ApplicationGatewayRedirectType,
     ApplicationGatewayOperationalState,
     ApplicationGatewayFirewallMode,
-    EnabledState,
-    Mode,
-    MatchVariable,
-    Operator,
-    Transform,
-    Action,
+    WebApplicationFirewallEnabledState,
+    WebApplicationFirewallMode,
+    WebApplicationFirewallMatchVariable,
+    WebApplicationFirewallOperator,
+    WebApplicationFirewallTransform,
+    WebApplicationFirewallAction,
     ResourceIdentityType,
     WebApplicationFirewallPolicy,
     ProvisioningState,
@@ -825,7 +825,7 @@ __all__ = [
     'ApplicationGatewayFirewallExclusion',
     'ApplicationGatewayWebApplicationFirewallConfiguration',
     'PolicySettings',
-    'MatchVariable1',
+    'MatchVariable',
     'MatchCondition',
     'CustomRule',
     'CustomRules',
@@ -1139,12 +1139,12 @@ __all__ = [
     'ApplicationGatewayRedirectType',
     'ApplicationGatewayOperationalState',
     'ApplicationGatewayFirewallMode',
-    'EnabledState',
-    'Mode',
-    'MatchVariable',
-    'Operator',
-    'Transform',
-    'Action',
+    'WebApplicationFirewallEnabledState',
+    'WebApplicationFirewallMode',
+    'WebApplicationFirewallMatchVariable',
+    'WebApplicationFirewallOperator',
+    'WebApplicationFirewallTransform',
+    'WebApplicationFirewallAction',
     'ResourceIdentityType',
     'WebApplicationFirewallPolicy',
     'ProvisioningState',

@@ -37,7 +37,8 @@ class CustomRule(Model):
      list[~azure.mgmt.network.v2018_12_01.models.MatchCondition]
     :param action: Required. Type of Actions. Possible values include:
      'Allow', 'Block', 'Log'
-    :type action: str or ~azure.mgmt.network.v2018_12_01.models.Action
+    :type action: str or
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallAction
     """
 
     _validation = {

@@ -18,10 +18,11 @@ class PolicySettings(Model):
     :param enabled_state: describes if the policy is in enabled state or
      disabled state. Possible values include: 'Disabled', 'Enabled'
     :type enabled_state: str or
-     ~azure.mgmt.network.v2018_12_01.models.EnabledState
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallEnabledState
     :param mode: Describes if it is in detection mode  or prevention mode at
      policy level. Possible values include: 'Prevention', 'Detection'
-    :type mode: str or ~azure.mgmt.network.v2018_12_01.models.Mode
+    :type mode: str or
+     ~azure.mgmt.network.v2018_12_01.models.WebApplicationFirewallMode
     """
 
     _attribute_map = {
