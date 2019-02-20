@@ -158,6 +158,12 @@ class RecurrenceFrequency(str, Enum):
     year = "Year"
 
 
+class GoogleAdWordsAuthenticationType(str, Enum):
+
+    service_authentication = "ServiceAuthentication"
+    user_authentication = "UserAuthentication"
+
+
 class SparkServerType(str, Enum):
 
     shark_server = "SharkServer"
@@ -267,6 +273,14 @@ class HttpAuthenticationType(str, Enum):
     client_certificate = "ClientCertificate"
 
 
+class RestServiceAuthenticationType(str, Enum):
+
+    anonymous = "Anonymous"
+    basic = "Basic"
+    aad_service_principal = "AadServicePrincipal"
+    managed_service_identity = "ManagedServiceIdentity"
+
+
 class MongoDbAuthenticationType(str, Enum):
 
     basic = "Basic"
@@ -277,6 +291,15 @@ class ODataAuthenticationType(str, Enum):
 
     basic = "Basic"
     anonymous = "Anonymous"
+    windows = "Windows"
+    aad_service_principal = "AadServicePrincipal"
+    managed_service_identity = "ManagedServiceIdentity"
+
+
+class ODataAadServicePrincipalCredentialType(str, Enum):
+
+    service_principal_key = "ServicePrincipalKey"
+    service_principal_cert = "ServicePrincipalCert"
 
 
 class TeradataAuthenticationType(str, Enum):
