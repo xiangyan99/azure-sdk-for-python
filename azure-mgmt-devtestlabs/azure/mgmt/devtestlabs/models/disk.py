@@ -49,11 +49,11 @@ class Disk(Resource):
     :param managed_disk_id: When backed by managed disk, this is the ID of the
      compute disk resource.
     :type managed_disk_id: str
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -61,8 +61,6 @@ class Disk(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -93,5 +91,5 @@ class Disk(Resource):
         self.created_date = None
         self.host_caching = kwargs.get('host_caching', None)
         self.managed_disk_id = kwargs.get('managed_disk_id', None)
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)

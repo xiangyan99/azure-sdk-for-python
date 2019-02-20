@@ -41,11 +41,11 @@ class Formula(Resource):
      ~azure.mgmt.devtestlabs.models.LabVirtualMachineCreationParameter
     :param vm: Information about a VM from which a formula is to be created.
     :type vm: ~azure.mgmt.devtestlabs.models.FormulaPropertiesFromVm
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -53,8 +53,6 @@ class Formula(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'creation_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -81,5 +79,5 @@ class Formula(Resource):
         self.creation_date = None
         self.formula_content = kwargs.get('formula_content', None)
         self.vm = kwargs.get('vm', None)
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)

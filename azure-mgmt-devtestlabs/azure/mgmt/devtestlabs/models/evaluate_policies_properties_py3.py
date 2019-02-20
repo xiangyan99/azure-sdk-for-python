@@ -21,20 +21,16 @@ class EvaluatePoliciesProperties(Model):
     :type fact_data: str
     :param value_offset: The value offset.
     :type value_offset: str
-    :param user_object_id: The user for which policies will be evaluated
-    :type user_object_id: str
     """
 
     _attribute_map = {
         'fact_name': {'key': 'factName', 'type': 'str'},
         'fact_data': {'key': 'factData', 'type': 'str'},
         'value_offset': {'key': 'valueOffset', 'type': 'str'},
-        'user_object_id': {'key': 'userObjectId', 'type': 'str'},
     }
 
-    def __init__(self, *, fact_name: str=None, fact_data: str=None, value_offset: str=None, user_object_id: str=None, **kwargs) -> None:
+    def __init__(self, *, fact_name: str=None, fact_data: str=None, value_offset: str=None, **kwargs) -> None:
         super(EvaluatePoliciesProperties, self).__init__(**kwargs)
         self.fact_name = fact_name
         self.fact_data = fact_data
         self.value_offset = value_offset
-        self.user_object_id = user_object_id

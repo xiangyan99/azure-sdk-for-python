@@ -41,11 +41,6 @@ class GalleryImage(Resource):
     :type icon: str
     :param enabled: Indicates whether this gallery image is enabled.
     :type enabled: bool
-    :param plan_id: The third party plan that applies to this image
-    :type plan_id: str
-    :param is_plan_authorized: Indicates if the plan has been authorized for
-     programmatic deployment.
-    :type is_plan_authorized: bool
     """
 
     _validation = {
@@ -67,11 +62,9 @@ class GalleryImage(Resource):
         'image_reference': {'key': 'properties.imageReference', 'type': 'GalleryImageReference'},
         'icon': {'key': 'properties.icon', 'type': 'str'},
         'enabled': {'key': 'properties.enabled', 'type': 'bool'},
-        'plan_id': {'key': 'properties.planId', 'type': 'str'},
-        'is_plan_authorized': {'key': 'properties.isPlanAuthorized', 'type': 'bool'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, author: str=None, description: str=None, image_reference=None, icon: str=None, enabled: bool=None, plan_id: str=None, is_plan_authorized: bool=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, author: str=None, description: str=None, image_reference=None, icon: str=None, enabled: bool=None, **kwargs) -> None:
         super(GalleryImage, self).__init__(location=location, tags=tags, **kwargs)
         self.author = author
         self.created_date = None
@@ -79,5 +72,3 @@ class GalleryImage(Resource):
         self.image_reference = image_reference
         self.icon = icon
         self.enabled = enabled
-        self.plan_id = plan_id
-        self.is_plan_authorized = is_plan_authorized

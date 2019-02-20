@@ -30,23 +30,17 @@ class NotificationChannel(Resource):
     :type tags: dict[str, str]
     :param web_hook_url: The webhook URL to send notifications to.
     :type web_hook_url: str
-    :param email_recipient: The email recipient to send notifications to (can
-     be a list of semi-colon separated email addresses).
-    :type email_recipient: str
-    :param notification_locale: The locale to use when sending a notification
-     (fallback for unsupported languages is EN).
-    :type notification_locale: str
     :param description: Description of notification.
     :type description: str
     :param events: The list of event for which this notification is enabled.
     :type events: list[~azure.mgmt.devtestlabs.models.Event]
     :ivar created_date: The creation date of the notification channel.
     :vartype created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -54,8 +48,6 @@ class NotificationChannel(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -65,8 +57,6 @@ class NotificationChannel(Resource):
         'location': {'key': 'location', 'type': 'str'},
         'tags': {'key': 'tags', 'type': '{str}'},
         'web_hook_url': {'key': 'properties.webHookUrl', 'type': 'str'},
-        'email_recipient': {'key': 'properties.emailRecipient', 'type': 'str'},
-        'notification_locale': {'key': 'properties.notificationLocale', 'type': 'str'},
         'description': {'key': 'properties.description', 'type': 'str'},
         'events': {'key': 'properties.events', 'type': '[Event]'},
         'created_date': {'key': 'properties.createdDate', 'type': 'iso-8601'},
@@ -74,13 +64,11 @@ class NotificationChannel(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, web_hook_url: str=None, email_recipient: str=None, notification_locale: str=None, description: str=None, events=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, web_hook_url: str=None, description: str=None, events=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(NotificationChannel, self).__init__(location=location, tags=tags, **kwargs)
         self.web_hook_url = web_hook_url
-        self.email_recipient = email_recipient
-        self.notification_locale = notification_locale
         self.description = description
         self.events = events
         self.created_date = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

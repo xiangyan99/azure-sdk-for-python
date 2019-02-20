@@ -35,29 +35,26 @@ class VirtualNetwork(Resource):
     :param external_provider_resource_id: The Microsoft.Network resource
      identifier of the virtual network.
     :type external_provider_resource_id: str
-    :ivar external_subnets: The external subnet properties.
-    :vartype external_subnets:
+    :param external_subnets: The external subnet properties.
+    :type external_subnets:
      list[~azure.mgmt.devtestlabs.models.ExternalSubnet]
     :param subnet_overrides: The subnet overrides of the virtual network.
     :type subnet_overrides:
      list[~azure.mgmt.devtestlabs.models.SubnetOverride]
     :ivar created_date: The creation date of the virtual network.
     :vartype created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
         'id': {'readonly': True},
         'name': {'readonly': True},
         'type': {'readonly': True},
-        'external_subnets': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -76,13 +73,13 @@ class VirtualNetwork(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, allowed_subnets=None, description: str=None, external_provider_resource_id: str=None, subnet_overrides=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, allowed_subnets=None, description: str=None, external_provider_resource_id: str=None, external_subnets=None, subnet_overrides=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(VirtualNetwork, self).__init__(location=location, tags=tags, **kwargs)
         self.allowed_subnets = allowed_subnets
         self.description = description
         self.external_provider_resource_id = external_provider_resource_id
-        self.external_subnets = None
+        self.external_subnets = external_subnets
         self.subnet_overrides = subnet_overrides
         self.created_date = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

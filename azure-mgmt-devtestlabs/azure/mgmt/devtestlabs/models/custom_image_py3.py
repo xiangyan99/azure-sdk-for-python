@@ -40,25 +40,11 @@ class CustomImage(Resource):
     :vartype creation_date: datetime
     :param managed_image_id: The Managed Image Id backing the custom image.
     :type managed_image_id: str
-    :param managed_snapshot_id: The Managed Snapshot Id backing the custom
-     image.
-    :type managed_snapshot_id: str
-    :param data_disk_storage_info: Storage information about the data disks
-     present in the custom image
-    :type data_disk_storage_info:
-     list[~azure.mgmt.devtestlabs.models.DataDiskStorageTypeInfo]
-    :param custom_image_plan: Storage information about the plan related to
-     this custom image
-    :type custom_image_plan:
-     ~azure.mgmt.devtestlabs.models.CustomImagePropertiesFromPlan
-    :param is_plan_authorized: Whether or not the custom images underlying
-     offer/plan has been enabled for programmatic deployment
-    :type is_plan_authorized: bool
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -66,8 +52,6 @@ class CustomImage(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'creation_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -82,15 +66,11 @@ class CustomImage(Resource):
         'author': {'key': 'properties.author', 'type': 'str'},
         'creation_date': {'key': 'properties.creationDate', 'type': 'iso-8601'},
         'managed_image_id': {'key': 'properties.managedImageId', 'type': 'str'},
-        'managed_snapshot_id': {'key': 'properties.managedSnapshotId', 'type': 'str'},
-        'data_disk_storage_info': {'key': 'properties.dataDiskStorageInfo', 'type': '[DataDiskStorageTypeInfo]'},
-        'custom_image_plan': {'key': 'properties.customImagePlan', 'type': 'CustomImagePropertiesFromPlan'},
-        'is_plan_authorized': {'key': 'properties.isPlanAuthorized', 'type': 'bool'},
         'provisioning_state': {'key': 'properties.provisioningState', 'type': 'str'},
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, vm=None, vhd=None, description: str=None, author: str=None, managed_image_id: str=None, managed_snapshot_id: str=None, data_disk_storage_info=None, custom_image_plan=None, is_plan_authorized: bool=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, vm=None, vhd=None, description: str=None, author: str=None, managed_image_id: str=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(CustomImage, self).__init__(location=location, tags=tags, **kwargs)
         self.vm = vm
         self.vhd = vhd
@@ -98,9 +78,5 @@ class CustomImage(Resource):
         self.author = author
         self.creation_date = None
         self.managed_image_id = managed_image_id
-        self.managed_snapshot_id = managed_snapshot_id
-        self.data_disk_storage_info = data_disk_storage_info
-        self.custom_image_plan = custom_image_plan
-        self.is_plan_authorized = is_plan_authorized
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

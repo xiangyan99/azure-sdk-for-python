@@ -49,11 +49,11 @@ class Disk(Resource):
     :param managed_disk_id: When backed by managed disk, this is the ID of the
      compute disk resource.
     :type managed_disk_id: str
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -61,8 +61,6 @@ class Disk(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -83,7 +81,7 @@ class Disk(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, disk_type=None, disk_size_gi_b: int=None, leased_by_lab_vm_id: str=None, disk_blob_name: str=None, disk_uri: str=None, host_caching: str=None, managed_disk_id: str=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, disk_type=None, disk_size_gi_b: int=None, leased_by_lab_vm_id: str=None, disk_blob_name: str=None, disk_uri: str=None, host_caching: str=None, managed_disk_id: str=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(Disk, self).__init__(location=location, tags=tags, **kwargs)
         self.disk_type = disk_type
         self.disk_size_gi_b = disk_size_gi_b
@@ -93,5 +91,5 @@ class Disk(Resource):
         self.created_date = None
         self.host_caching = host_caching
         self.managed_disk_id = managed_disk_id
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier
