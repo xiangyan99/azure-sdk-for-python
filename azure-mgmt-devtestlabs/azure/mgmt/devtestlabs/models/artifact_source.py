@@ -50,11 +50,11 @@ class ArtifactSource(Resource):
     :type status: str or ~azure.mgmt.devtestlabs.models.EnableStatus
     :ivar created_date: The artifact source's creation date.
     :vartype created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -62,8 +62,6 @@ class ArtifactSource(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -96,5 +94,5 @@ class ArtifactSource(Resource):
         self.security_token = kwargs.get('security_token', None)
         self.status = kwargs.get('status', None)
         self.created_date = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)

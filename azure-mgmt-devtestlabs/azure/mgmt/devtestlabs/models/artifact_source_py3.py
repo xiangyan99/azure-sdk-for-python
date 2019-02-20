@@ -50,11 +50,11 @@ class ArtifactSource(Resource):
     :type status: str or ~azure.mgmt.devtestlabs.models.EnableStatus
     :ivar created_date: The artifact source's creation date.
     :vartype created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -62,8 +62,6 @@ class ArtifactSource(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -85,7 +83,7 @@ class ArtifactSource(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, display_name: str=None, uri: str=None, source_type=None, folder_path: str=None, arm_template_folder_path: str=None, branch_ref: str=None, security_token: str=None, status=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, display_name: str=None, uri: str=None, source_type=None, folder_path: str=None, arm_template_folder_path: str=None, branch_ref: str=None, security_token: str=None, status=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(ArtifactSource, self).__init__(location=location, tags=tags, **kwargs)
         self.display_name = display_name
         self.uri = uri
@@ -96,5 +94,5 @@ class ArtifactSource(Resource):
         self.security_token = security_token
         self.status = status
         self.created_date = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

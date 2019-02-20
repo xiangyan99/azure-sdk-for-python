@@ -9,12 +9,23 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from .update_resource import UpdateResource
+from .resource import Resource
 
 
-class ArtifactSourceFragment(UpdateResource):
+class ArtifactSourceFragment(Resource):
     """Properties of an artifact source.
 
+    Variables are only populated by the server, and will be ignored when
+    sending a request.
+
+    :ivar id: The identifier of the resource.
+    :vartype id: str
+    :ivar name: The name of the resource.
+    :vartype name: str
+    :ivar type: The type of the resource.
+    :vartype type: str
+    :param location: The location of the resource.
+    :type location: str
     :param tags: The tags of the resource.
     :type tags: dict[str, str]
     :param display_name: The artifact source's display name.
@@ -37,9 +48,24 @@ class ArtifactSourceFragment(UpdateResource):
     :param status: Indicates if the artifact source is enabled (values:
      Enabled, Disabled). Possible values include: 'Enabled', 'Disabled'
     :type status: str or ~azure.mgmt.devtestlabs.models.EnableStatus
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
+     (Guid).
+    :type unique_identifier: str
     """
 
+    _validation = {
+        'id': {'readonly': True},
+        'name': {'readonly': True},
+        'type': {'readonly': True},
+    }
+
     _attribute_map = {
+        'id': {'key': 'id', 'type': 'str'},
+        'name': {'key': 'name', 'type': 'str'},
+        'type': {'key': 'type', 'type': 'str'},
+        'location': {'key': 'location', 'type': 'str'},
         'tags': {'key': 'tags', 'type': '{str}'},
         'display_name': {'key': 'properties.displayName', 'type': 'str'},
         'uri': {'key': 'properties.uri', 'type': 'str'},
@@ -49,6 +75,8 @@ class ArtifactSourceFragment(UpdateResource):
         'branch_ref': {'key': 'properties.branchRef', 'type': 'str'},
         'security_token': {'key': 'properties.securityToken', 'type': 'str'},
         'status': {'key': 'properties.status', 'type': 'str'},
+        'provisioning_state': {'key': 'properties.provisioningState', 'type': 'str'},
+        'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
     def __init__(self, **kwargs):
@@ -61,3 +89,5 @@ class ArtifactSourceFragment(UpdateResource):
         self.branch_ref = kwargs.get('branch_ref', None)
         self.security_token = kwargs.get('security_token', None)
         self.status = kwargs.get('status', None)
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)

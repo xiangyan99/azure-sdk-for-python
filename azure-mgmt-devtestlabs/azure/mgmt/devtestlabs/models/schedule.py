@@ -52,11 +52,11 @@ class Schedule(Resource):
     :vartype created_date: datetime
     :param target_resource_id: The resource ID to which the schedule belongs
     :type target_resource_id: str
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -64,8 +64,6 @@ class Schedule(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -98,5 +96,5 @@ class Schedule(Resource):
         self.notification_settings = kwargs.get('notification_settings', None)
         self.created_date = None
         self.target_resource_id = kwargs.get('target_resource_id', None)
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)

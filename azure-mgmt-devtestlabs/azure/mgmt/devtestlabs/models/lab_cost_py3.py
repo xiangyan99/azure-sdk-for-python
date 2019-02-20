@@ -47,11 +47,11 @@ class LabCost(Resource):
     :type end_date_time: datetime
     :param created_date: The creation date of the cost.
     :type created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -61,8 +61,6 @@ class LabCost(Resource):
         'lab_cost_summary': {'readonly': True},
         'lab_cost_details': {'readonly': True},
         'resource_costs': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -83,7 +81,7 @@ class LabCost(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, target_cost=None, currency_code: str=None, start_date_time=None, end_date_time=None, created_date=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, target_cost=None, currency_code: str=None, start_date_time=None, end_date_time=None, created_date=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(LabCost, self).__init__(location=location, tags=tags, **kwargs)
         self.target_cost = target_cost
         self.lab_cost_summary = None
@@ -93,5 +91,5 @@ class LabCost(Resource):
         self.start_date_time = start_date_time
         self.end_date_time = end_date_time
         self.created_date = created_date
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

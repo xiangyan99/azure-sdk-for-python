@@ -18,6 +18,12 @@ class EnableStatus(str, Enum):
     disabled = "Disabled"
 
 
+class NotificationStatus(str, Enum):
+
+    disabled = "Disabled"
+    enabled = "Enabled"
+
+
 class SourceControlType(str, Enum):
 
     vso_git = "VsoGit"
@@ -92,12 +98,6 @@ class PremiumDataDisk(str, Enum):
 
     disabled = "Disabled"
     enabled = "Enabled"
-
-
-class EnvironmentPermission(str, Enum):
-
-    reader = "Reader"
-    contributor = "Contributor"
 
 
 class TargetCostStatus(str, Enum):
@@ -181,8 +181,6 @@ class PolicyFactName(str, Enum):
     gallery_image = "GalleryImage"
     user_owned_lab_vm_count_in_subnet = "UserOwnedLabVmCountInSubnet"
     lab_target_cost = "LabTargetCost"
-    environment_template = "EnvironmentTemplate"
-    schedule_edit_permission = "ScheduleEditPermission"
 
 
 class PolicyEvaluatorType(str, Enum):

@@ -29,8 +29,6 @@ from .users_operations import UsersOperations
 from .disks_operations import DisksOperations
 from .environments_operations import EnvironmentsOperations
 from .secrets_operations import SecretsOperations
-from .service_fabrics_operations import ServiceFabricsOperations
-from .service_fabric_schedules_operations import ServiceFabricSchedulesOperations
 from .virtual_machines_operations import VirtualMachinesOperations
 from .virtual_machine_schedules_operations import VirtualMachineSchedulesOperations
 from .virtual_networks_operations import VirtualNetworksOperations
@@ -56,8 +54,6 @@ __all__ = [
     'DisksOperations',
     'EnvironmentsOperations',
     'SecretsOperations',
-    'ServiceFabricsOperations',
-    'ServiceFabricSchedulesOperations',
     'VirtualMachinesOperations',
     'VirtualMachineSchedulesOperations',
     'VirtualNetworksOperations',

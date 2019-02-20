@@ -35,9 +35,6 @@ class LabVirtualMachineCreationParameter(Model):
     :type created_by_user: str
     :param created_date: The creation date of the virtual machine.
     :type created_date: datetime
-    :param compute_id: The resource identifier (Microsoft.Compute) of the
-     virtual machine.
-    :type compute_id: str
     :param custom_image_id: The custom image identifier of the virtual
      machine.
     :type custom_image_id: str
@@ -75,12 +72,15 @@ class LabVirtualMachineCreationParameter(Model):
      reference of the virtual machine.
     :type gallery_image_reference:
      ~azure.mgmt.devtestlabs.models.GalleryImageReference
-    :param plan_id: The id of the plan associated with the virtual machine
-     image
-    :type plan_id: str
+    :param compute_vm: The compute virtual machine properties.
+    :type compute_vm: ~azure.mgmt.devtestlabs.models.ComputeVmProperties
     :param network_interface: The network interface properties.
     :type network_interface:
      ~azure.mgmt.devtestlabs.models.NetworkInterfaceProperties
+    :param applicable_schedule: The applicable schedule for the virtual
+     machine.
+    :type applicable_schedule:
+     ~azure.mgmt.devtestlabs.models.ApplicableSchedule
     :param expiration_date: The expiration date for VM.
     :type expiration_date: datetime
     :param allow_claim: Indicates whether another user can take ownership of
@@ -97,16 +97,11 @@ class LabVirtualMachineCreationParameter(Model):
     :param environment_id: The resource ID of the environment that contains
      this virtual machine, if any.
     :type environment_id: str
-    :param data_disk_parameters: New or existing data disks to attach to the
-     virtual machine after creation
-    :type data_disk_parameters:
-     list[~azure.mgmt.devtestlabs.models.DataDiskProperties]
-    :param schedule_parameters: Virtual Machine schedules to be created
-    :type schedule_parameters:
-     list[~azure.mgmt.devtestlabs.models.ScheduleCreationParameter]
-    :param last_known_power_state: Last known compute power state captured in
-     DTL
-    :type last_known_power_state: str
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
+     (Guid).
+    :type unique_identifier: str
     :param name: The name of the virtual machine or environment
     :type name: str
     :param location: The location of the new virtual machine or environment
@@ -123,7 +118,6 @@ class LabVirtualMachineCreationParameter(Model):
         'created_by_user_id': {'key': 'properties.createdByUserId', 'type': 'str'},
         'created_by_user': {'key': 'properties.createdByUser', 'type': 'str'},
         'created_date': {'key': 'properties.createdDate', 'type': 'iso-8601'},
-        'compute_id': {'key': 'properties.computeId', 'type': 'str'},
         'custom_image_id': {'key': 'properties.customImageId', 'type': 'str'},
         'os_type': {'key': 'properties.osType', 'type': 'str'},
         'size': {'key': 'properties.size', 'type': 'str'},
@@ -138,16 +132,16 @@ class LabVirtualMachineCreationParameter(Model):
         'artifacts': {'key': 'properties.artifacts', 'type': '[ArtifactInstallProperties]'},
         'artifact_deployment_status': {'key': 'properties.artifactDeploymentStatus', 'type': 'ArtifactDeploymentStatusProperties'},
         'gallery_image_reference': {'key': 'properties.galleryImageReference', 'type': 'GalleryImageReference'},
-        'plan_id': {'key': 'properties.planId', 'type': 'str'},
+        'compute_vm': {'key': 'properties.computeVm', 'type': 'ComputeVmProperties'},
         'network_interface': {'key': 'properties.networkInterface', 'type': 'NetworkInterfaceProperties'},
+        'applicable_schedule': {'key': 'properties.applicableSchedule', 'type': 'ApplicableSchedule'},
         'expiration_date': {'key': 'properties.expirationDate', 'type': 'iso-8601'},
         'allow_claim': {'key': 'properties.allowClaim', 'type': 'bool'},
         'storage_type': {'key': 'properties.storageType', 'type': 'str'},
         'virtual_machine_creation_source': {'key': 'properties.virtualMachineCreationSource', 'type': 'str'},
         'environment_id': {'key': 'properties.environmentId', 'type': 'str'},
-        'data_disk_parameters': {'key': 'properties.dataDiskParameters', 'type': '[DataDiskProperties]'},
-        'schedule_parameters': {'key': 'properties.scheduleParameters', 'type': '[ScheduleCreationParameter]'},
-        'last_known_power_state': {'key': 'properties.lastKnownPowerState', 'type': 'str'},
+        'provisioning_state': {'key': 'properties.provisioningState', 'type': 'str'},
+        'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
         'name': {'key': 'name', 'type': 'str'},
         'location': {'key': 'location', 'type': 'str'},
         'tags': {'key': 'tags', 'type': '{str}'},
@@ -162,7 +156,6 @@ class LabVirtualMachineCreationParameter(Model):
         self.created_by_user_id = kwargs.get('created_by_user_id', None)
         self.created_by_user = kwargs.get('created_by_user', None)
         self.created_date = kwargs.get('created_date', None)
-        self.compute_id = kwargs.get('compute_id', None)
         self.custom_image_id = kwargs.get('custom_image_id', None)
         self.os_type = kwargs.get('os_type', None)
         self.size = kwargs.get('size', None)
@@ -177,16 +170,16 @@ class LabVirtualMachineCreationParameter(Model):
         self.artifacts = kwargs.get('artifacts', None)
         self.artifact_deployment_status = kwargs.get('artifact_deployment_status', None)
         self.gallery_image_reference = kwargs.get('gallery_image_reference', None)
-        self.plan_id = kwargs.get('plan_id', None)
+        self.compute_vm = kwargs.get('compute_vm', None)
         self.network_interface = kwargs.get('network_interface', None)
+        self.applicable_schedule = kwargs.get('applicable_schedule', None)
         self.expiration_date = kwargs.get('expiration_date', None)
         self.allow_claim = kwargs.get('allow_claim', None)
         self.storage_type = kwargs.get('storage_type', None)
         self.virtual_machine_creation_source = kwargs.get('virtual_machine_creation_source', None)
         self.environment_id = kwargs.get('environment_id', None)
-        self.data_disk_parameters = kwargs.get('data_disk_parameters', None)
-        self.schedule_parameters = kwargs.get('schedule_parameters', None)
-        self.last_known_power_state = kwargs.get('last_known_power_state', None)
+        self.provisioning_state = kwargs.get('provisioning_state', None)
+        self.unique_identifier = kwargs.get('unique_identifier', None)
         self.name = kwargs.get('name', None)
         self.location = kwargs.get('location', None)
         self.tags = kwargs.get('tags', None)

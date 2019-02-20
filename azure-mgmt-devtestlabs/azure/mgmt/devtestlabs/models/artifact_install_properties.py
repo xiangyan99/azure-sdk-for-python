@@ -17,8 +17,6 @@ class ArtifactInstallProperties(Model):
 
     :param artifact_id: The artifact's identifier.
     :type artifact_id: str
-    :param artifact_title: The artifact's title.
-    :type artifact_title: str
     :param parameters: The parameters of the artifact.
     :type parameters:
      list[~azure.mgmt.devtestlabs.models.ArtifactParameterProperties]
@@ -36,7 +34,6 @@ class ArtifactInstallProperties(Model):
 
     _attribute_map = {
         'artifact_id': {'key': 'artifactId', 'type': 'str'},
-        'artifact_title': {'key': 'artifactTitle', 'type': 'str'},
         'parameters': {'key': 'parameters', 'type': '[ArtifactParameterProperties]'},
         'status': {'key': 'status', 'type': 'str'},
         'deployment_status_message': {'key': 'deploymentStatusMessage', 'type': 'str'},
@@ -47,7 +44,6 @@ class ArtifactInstallProperties(Model):
     def __init__(self, **kwargs):
         super(ArtifactInstallProperties, self).__init__(**kwargs)
         self.artifact_id = kwargs.get('artifact_id', None)
-        self.artifact_title = kwargs.get('artifact_title', None)
         self.parameters = kwargs.get('parameters', None)
         self.status = kwargs.get('status', None)
         self.deployment_status_message = kwargs.get('deployment_status_message', None)

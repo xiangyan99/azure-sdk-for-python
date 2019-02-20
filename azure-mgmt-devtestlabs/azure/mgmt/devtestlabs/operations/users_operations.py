@@ -25,7 +25,7 @@ class UsersOperations(object):
     :param config: Configuration of service client.
     :param serializer: An object model serializer.
     :param deserializer: An object model deserializer.
-    :ivar api_version: Client API version. Constant value: "2018-09-15".
+    :ivar api_version: Client API version. Constant value: "2022-01-02".
     """
 
     models = models
@@ -35,7 +35,7 @@ class UsersOperations(object):
         self._client = client
         self._serialize = serializer
         self._deserialize = deserializer
-        self.api_version = "2018-09-15"
+        self.api_version = "2022-01-02"
 
         self.config = config
 
@@ -50,14 +50,13 @@ class UsersOperations(object):
         :param expand: Specify the $expand query. Example:
          'properties($select=identity)'
         :type expand: str
-        :param filter: The filter to apply to the operation. Example:
-         '$filter=contains(name,'myName')
+        :param filter: The filter to apply to the operation.
         :type filter: str
         :param top: The maximum number of resources to return from the
-         operation. Example: '$top=10'
+         operation.
         :type top: int
         :param orderby: The ordering expression for the results, using OData
-         notation. Example: '$orderby=name desc'
+         notation.
         :type orderby: str
         :param dict custom_headers: headers that will be added to the request
         :param bool raw: returns the direct response alongside the
@@ -199,9 +198,28 @@ class UsersOperations(object):
         return deserialized
     get.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}'}
 
-
-    def _create_or_update_initial(
+    def create_or_update(
             self, resource_group_name, lab_name, name, user, custom_headers=None, raw=False, **operation_config):
+        """Create or replace an existing user profile.
+
+        :param resource_group_name: The name of the resource group.
+        :type resource_group_name: str
+        :param lab_name: The name of the lab.
+        :type lab_name: str
+        :param name: The name of the user profile.
+        :type name: str
+        :param user: Profile of a lab user.
+        :type user: ~azure.mgmt.devtestlabs.models.User
+        :param dict custom_headers: headers that will be added to the request
+        :param bool raw: returns the direct response alongside the
+         deserialized response
+        :param operation_config: :ref:`Operation configuration
+         overrides<msrest:optionsforoperations>`.
+        :return: User or ClientRawResponse if raw=true
+        :rtype: ~azure.mgmt.devtestlabs.models.User or
+         ~msrest.pipeline.ClientRawResponse
+        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
+        """
         # Construct URL
         url = self.create_or_update.metadata['url']
         path_format_arguments = {
@@ -251,59 +269,6 @@ class UsersOperations(object):
             return client_raw_response
 
         return deserialized
-
-    def create_or_update(
-            self, resource_group_name, lab_name, name, user, custom_headers=None, raw=False, polling=True, **operation_config):
-        """Create or replace an existing user profile. This operation can take a
-        while to complete.
-
-        :param resource_group_name: The name of the resource group.
-        :type resource_group_name: str
-        :param lab_name: The name of the lab.
-        :type lab_name: str
-        :param name: The name of the user profile.
-        :type name: str
-        :param user: Profile of a lab user.
-        :type user: ~azure.mgmt.devtestlabs.models.User
-        :param dict custom_headers: headers that will be added to the request
-        :param bool raw: The poller return type is ClientRawResponse, the
-         direct response alongside the deserialized response
-        :param polling: True for ARMPolling, False for no polling, or a
-         polling object for personal polling strategy
-        :return: An instance of LROPoller that returns User or
-         ClientRawResponse<User> if raw==True
-        :rtype:
-         ~msrestazure.azure_operation.AzureOperationPoller[~azure.mgmt.devtestlabs.models.User]
-         or
-         ~msrestazure.azure_operation.AzureOperationPoller[~msrest.pipeline.ClientRawResponse[~azure.mgmt.devtestlabs.models.User]]
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
-        """
-        raw_result = self._create_or_update_initial(
-            resource_group_name=resource_group_name,
-            lab_name=lab_name,
-            name=name,
-            user=user,
-            custom_headers=custom_headers,
-            raw=True,
-            **operation_config
-        )
-
-        def get_long_running_output(response):
-            deserialized = self._deserialize('User', response)
-
-            if raw:
-                client_raw_response = ClientRawResponse(deserialized, response)
-                return client_raw_response
-
-            return deserialized
-
-        lro_delay = operation_config.get(
-            'long_running_operation_timeout',
-            self.config.long_running_operation_timeout)
-        if polling is True: polling_method = ARMPolling(lro_delay, **operation_config)
-        elif polling is False: polling_method = NoPolling()
-        else: polling_method = polling
-        return LROPoller(self._client, raw_result, get_long_running_output, polling_method)
     create_or_update.metadata = {'url': '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}'}
 
 
@@ -336,7 +301,7 @@ class UsersOperations(object):
         request = self._client.delete(url, query_parameters, header_parameters)
         response = self._client.send(request, stream=False, **operation_config)
 
-        if response.status_code not in [200, 202, 204]:
+        if response.status_code not in [202, 204]:
             exp = CloudError(response)
             exp.request_id = response.headers.get('x-ms-request-id')
             raise exp

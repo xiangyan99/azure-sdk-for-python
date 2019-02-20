@@ -29,10 +29,6 @@ class ShutdownNotificationContent(Model):
     :type guid: str
     :param owner: The owner of the virtual machine.
     :type owner: str
-    :param vm_url: The URL of the virtual machine.
-    :type vm_url: str
-    :param minutes_until_shutdown: Minutes remaining until shutdown
-    :type minutes_until_shutdown: str
     :param event_type: The event for which a notification will be sent.
     :type event_type: str
     :param text: The text for the notification.
@@ -52,8 +48,6 @@ class ShutdownNotificationContent(Model):
         'vm_name': {'key': 'vmName', 'type': 'str'},
         'guid': {'key': 'guid', 'type': 'str'},
         'owner': {'key': 'owner', 'type': 'str'},
-        'vm_url': {'key': 'vmUrl', 'type': 'str'},
-        'minutes_until_shutdown': {'key': 'minutesUntilShutdown', 'type': 'str'},
         'event_type': {'key': 'eventType', 'type': 'str'},
         'text': {'key': 'text', 'type': 'str'},
         'subscription_id': {'key': 'subscriptionId', 'type': 'str'},
@@ -61,7 +55,7 @@ class ShutdownNotificationContent(Model):
         'lab_name': {'key': 'labName', 'type': 'str'},
     }
 
-    def __init__(self, *, skip_url: str=None, delay_url60: str=None, delay_url120: str=None, vm_name: str=None, guid: str=None, owner: str=None, vm_url: str=None, minutes_until_shutdown: str=None, event_type: str=None, text: str=None, subscription_id: str=None, resource_group_name: str=None, lab_name: str=None, **kwargs) -> None:
+    def __init__(self, *, skip_url: str=None, delay_url60: str=None, delay_url120: str=None, vm_name: str=None, guid: str=None, owner: str=None, event_type: str=None, text: str=None, subscription_id: str=None, resource_group_name: str=None, lab_name: str=None, **kwargs) -> None:
         super(ShutdownNotificationContent, self).__init__(**kwargs)
         self.skip_url = skip_url
         self.delay_url60 = delay_url60
@@ -69,8 +63,6 @@ class ShutdownNotificationContent(Model):
         self.vm_name = vm_name
         self.guid = guid
         self.owner = owner
-        self.vm_url = vm_url
-        self.minutes_until_shutdown = minutes_until_shutdown
         self.event_type = event_type
         self.text = text
         self.subscription_id = subscription_id

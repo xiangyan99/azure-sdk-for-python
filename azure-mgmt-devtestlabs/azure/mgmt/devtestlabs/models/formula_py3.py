@@ -41,11 +41,11 @@ class Formula(Resource):
      ~azure.mgmt.devtestlabs.models.LabVirtualMachineCreationParameter
     :param vm: Information about a VM from which a formula is to be created.
     :type vm: ~azure.mgmt.devtestlabs.models.FormulaPropertiesFromVm
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -53,8 +53,6 @@ class Formula(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'creation_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -73,7 +71,7 @@ class Formula(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, description: str=None, author: str=None, os_type: str=None, formula_content=None, vm=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, description: str=None, author: str=None, os_type: str=None, formula_content=None, vm=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(Formula, self).__init__(location=location, tags=tags, **kwargs)
         self.description = description
         self.author = author
@@ -81,5 +79,5 @@ class Formula(Resource):
         self.creation_date = None
         self.formula_content = formula_content
         self.vm = vm
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

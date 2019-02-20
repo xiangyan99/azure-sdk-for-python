@@ -34,11 +34,11 @@ class User(Resource):
     :type secret_store: ~azure.mgmt.devtestlabs.models.UserSecretStore
     :ivar created_date: The creation date of the user profile.
     :vartype created_date: datetime
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -46,8 +46,6 @@ class User(Resource):
         'name': {'readonly': True},
         'type': {'readonly': True},
         'created_date': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -63,10 +61,10 @@ class User(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, identity=None, secret_store=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, identity=None, secret_store=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(User, self).__init__(location=location, tags=tags, **kwargs)
         self.identity = identity
         self.secret_store = secret_store
         self.created_date = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier

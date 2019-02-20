@@ -33,8 +33,6 @@ from .operations.users_operations import UsersOperations
 from .operations.disks_operations import DisksOperations
 from .operations.environments_operations import EnvironmentsOperations
 from .operations.secrets_operations import SecretsOperations
-from .operations.service_fabrics_operations import ServiceFabricsOperations
-from .operations.service_fabric_schedules_operations import ServiceFabricSchedulesOperations
 from .operations.virtual_machines_operations import VirtualMachinesOperations
 from .operations.virtual_machine_schedules_operations import VirtualMachineSchedulesOperations
 from .operations.virtual_networks_operations import VirtualNetworksOperations
@@ -119,10 +117,6 @@ class DevTestLabsClient(SDKClient):
     :vartype environments: azure.mgmt.devtestlabs.operations.EnvironmentsOperations
     :ivar secrets: Secrets operations
     :vartype secrets: azure.mgmt.devtestlabs.operations.SecretsOperations
-    :ivar service_fabrics: ServiceFabrics operations
-    :vartype service_fabrics: azure.mgmt.devtestlabs.operations.ServiceFabricsOperations
-    :ivar service_fabric_schedules: ServiceFabricSchedules operations
-    :vartype service_fabric_schedules: azure.mgmt.devtestlabs.operations.ServiceFabricSchedulesOperations
     :ivar virtual_machines: VirtualMachines operations
     :vartype virtual_machines: azure.mgmt.devtestlabs.operations.VirtualMachinesOperations
     :ivar virtual_machine_schedules: VirtualMachineSchedules operations
@@ -145,7 +139,7 @@ class DevTestLabsClient(SDKClient):
         super(DevTestLabsClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '2018-09-15'
+        self.api_version = '2022-01-02'
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
@@ -188,10 +182,6 @@ class DevTestLabsClient(SDKClient):
         self.environments = EnvironmentsOperations(
             self._client, self.config, self._serialize, self._deserialize)
         self.secrets = SecretsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.service_fabrics = ServiceFabricsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.service_fabric_schedules = ServiceFabricSchedulesOperations(
             self._client, self.config, self._serialize, self._deserialize)
         self.virtual_machines = VirtualMachinesOperations(
             self._client, self.config, self._serialize, self._deserialize)

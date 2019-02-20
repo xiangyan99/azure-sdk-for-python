@@ -17,8 +17,6 @@ class ArtifactInstallPropertiesFragment(Model):
 
     :param artifact_id: The artifact's identifier.
     :type artifact_id: str
-    :param artifact_title: The artifact's title.
-    :type artifact_title: str
     :param parameters: The parameters of the artifact.
     :type parameters:
      list[~azure.mgmt.devtestlabs.models.ArtifactParameterPropertiesFragment]
@@ -36,7 +34,6 @@ class ArtifactInstallPropertiesFragment(Model):
 
     _attribute_map = {
         'artifact_id': {'key': 'artifactId', 'type': 'str'},
-        'artifact_title': {'key': 'artifactTitle', 'type': 'str'},
         'parameters': {'key': 'parameters', 'type': '[ArtifactParameterPropertiesFragment]'},
         'status': {'key': 'status', 'type': 'str'},
         'deployment_status_message': {'key': 'deploymentStatusMessage', 'type': 'str'},
@@ -44,10 +41,9 @@ class ArtifactInstallPropertiesFragment(Model):
         'install_time': {'key': 'installTime', 'type': 'iso-8601'},
     }
 
-    def __init__(self, *, artifact_id: str=None, artifact_title: str=None, parameters=None, status: str=None, deployment_status_message: str=None, vm_extension_status_message: str=None, install_time=None, **kwargs) -> None:
+    def __init__(self, *, artifact_id: str=None, parameters=None, status: str=None, deployment_status_message: str=None, vm_extension_status_message: str=None, install_time=None, **kwargs) -> None:
         super(ArtifactInstallPropertiesFragment, self).__init__(**kwargs)
         self.artifact_id = artifact_id
-        self.artifact_title = artifact_title
         self.parameters = parameters
         self.status = status
         self.deployment_status_message = deployment_status_message

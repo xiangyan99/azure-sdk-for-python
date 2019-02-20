@@ -40,11 +40,11 @@ class DtlEnvironment(Resource):
     :vartype resource_group_id: str
     :ivar created_by_user: The creator of the environment.
     :vartype created_by_user: str
-    :ivar provisioning_state: The provisioning status of the resource.
-    :vartype provisioning_state: str
-    :ivar unique_identifier: The unique immutable identifier of a resource
+    :param provisioning_state: The provisioning status of the resource.
+    :type provisioning_state: str
+    :param unique_identifier: The unique immutable identifier of a resource
      (Guid).
-    :vartype unique_identifier: str
+    :type unique_identifier: str
     """
 
     _validation = {
@@ -53,8 +53,6 @@ class DtlEnvironment(Resource):
         'type': {'readonly': True},
         'resource_group_id': {'readonly': True},
         'created_by_user': {'readonly': True},
-        'provisioning_state': {'readonly': True},
-        'unique_identifier': {'readonly': True},
     }
 
     _attribute_map = {
@@ -71,11 +69,11 @@ class DtlEnvironment(Resource):
         'unique_identifier': {'key': 'properties.uniqueIdentifier', 'type': 'str'},
     }
 
-    def __init__(self, *, location: str=None, tags=None, deployment_properties=None, arm_template_display_name: str=None, **kwargs) -> None:
+    def __init__(self, *, location: str=None, tags=None, deployment_properties=None, arm_template_display_name: str=None, provisioning_state: str=None, unique_identifier: str=None, **kwargs) -> None:
         super(DtlEnvironment, self).__init__(location=location, tags=tags, **kwargs)
         self.deployment_properties = deployment_properties
         self.arm_template_display_name = arm_template_display_name
         self.resource_group_id = None
         self.created_by_user = None
-        self.provisioning_state = None
-        self.unique_identifier = None
+        self.provisioning_state = provisioning_state
+        self.unique_identifier = unique_identifier
