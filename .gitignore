@@ -71,3 +71,4 @@ src/build
 adlEnv/
 
 code_reports
+.vscode/settings.json
