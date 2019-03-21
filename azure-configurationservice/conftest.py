@@ -21,14 +21,28 @@ class AzConfigTestData():
         self.label1_data = []
         self.label2_data = []
         self.no_label_data = []
-        self.quantity_each_label = 1
+        self.quantity_each_label = 34 # three labels, each 34, 34 * 3 > 100. So the data will have multi pages to test
+        self.page_size = 100 # page size of AzConfig
+
+
+@pytest.fixture(scope="module")
+def app_config_client():
+    # [START create_app_configuration_client]
+    import os
+    from azure.configuration import AzureConfigurationClient
+
+    connection_str = os.environ['APP_CONFIG_CONNECTION_STR']
+
+    # Create a new app configuration client using SAS credentials
+    app_config_client = AzureConfigurationClient(connection_str)
+
+    # [END create_app_configuration_client]
+
+    return app_config_client
 
 
 @pytest.fixture(scope="module", name="key_value_data")
-def prepare_key_value_data():
-    connection_str = os.environ['APP_CONFIG_CONNECTION_STR']
-    app_config_client = AzureConfigurationClient(connection_str)
-
+def prepare_key_value_data(app_config_client):
     label_uuid = str(uuid.uuid1())
     label1 = "test_label1_" + label_uuid
     label2 = "test_label2_" + label_uuid
@@ -45,6 +59,10 @@ def prepare_key_value_data():
         kv.value = "test_value"
         kv.label = label1
         kv.content_type = content_type
+        kv.tags = {
+            "tag1": "tag1",
+            "tag2": "tag2"
+        }
         test_data.label1_data.append(app_config_client.add_key_value(kv))
     
     for i in range(test_data.quantity_each_label):
@@ -53,8 +71,13 @@ def prepare_key_value_data():
         kv.value = "test_value"
         kv.label = label2
         kv.content_type = content_type
+        kv.tags = {
+            "tag1": "tag1",
+            "tag2": "tag2"
+        }
 
         test_data.label2_data.append(app_config_client.add_key_value(kv))
+
 
     #create a key_value object without label
     for i in range(test_data.quantity_each_label):
@@ -62,6 +85,10 @@ def prepare_key_value_data():
         kv.key = "test_key_" + str(uuid.uuid1())
         kv.value = "test_value"
         kv.content_type = content_type
+        kv.tags = {
+            "tag1": "tag1",
+            "tag2": "tag2"
+        }
         test_data.no_label_data.append(app_config_client.add_key_value(kv))
 
     yield test_data
