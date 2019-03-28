@@ -1,3 +1,4 @@
+'''
 #-------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for
@@ -27,16 +28,8 @@ class AzConfigTestData():
 
 @pytest.fixture(scope="module")
 def app_config_client():
-    # [START create_app_configuration_client]
-    import os
-    from azure.configuration import AzureConfigurationClient
-
     connection_str = os.environ['APP_CONFIG_CONNECTION_STR']
-
-    # Create a new app configuration client using SAS credentials
     app_config_client = AzureConfigurationClient(connection_str)
-
-    # [END create_app_configuration_client]
 
     return app_config_client
 
@@ -101,3 +94,4 @@ def prepare_key_value_data(app_config_client):
     for kv in test_data.no_label_data:
         app_config_client.delete_key_value(kv.key)
 
+'''
