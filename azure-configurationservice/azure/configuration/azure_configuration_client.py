@@ -26,19 +26,13 @@ class AzureConfigurationClient(object):
     
     def _create_azconfig_pipeline(self):
         policies = [
-            self._client.config.user_agent_policy,  # UserAgent policy
-            self._client.config.logging_policy,  # HTTP request/response log
-            AzConfigRequestsCredentialsPolicy(self._client.credentials)
+            self._client._config.user_agent_policy,  # UserAgent policy
+            self._client._config.logging_policy,  # HTTP request/response log
+            AzConfigRequestsCredentialsPolicy(self._client._config.credentials)
         ]
 
-        config = Configuration()
-        config.connection.timeout = self._client.config.connection.timeout
-        config.connection.cert = self._client.config.connection.cert
-        config.connection.verify = self._client.config.connection.verify
-
-
         return Pipeline(
-            RequestsTransport(config),  # Send HTTP request using requests
+            RequestsTransport(self._client._config),  # Send HTTP request using requests
             policies
         )
 
