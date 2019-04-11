@@ -6,5 +6,5 @@
 # --------------------------------------------------------------------------
 
 from ._azure_configuration_client_imp_async import AzureConfigurationClientImp
-from ._configuration_async import AzureConfigurationClientImpConfiguration
+from .._configuration import AzureConfigurationClientImpConfiguration
 __all__ = ['AzureConfigurationClientImp']

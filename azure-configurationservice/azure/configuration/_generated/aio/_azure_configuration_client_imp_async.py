@@ -5,15 +5,15 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-# from azure.core import AsyncPipelineClient  TODO
+from azure.core import PipelineClient
 from msrest import Serializer, Deserializer
 
-from ._configuration_async import AzureConfigurationClientImpConfiguration
+from .._configuration import AzureConfigurationClientImpConfiguration
 from .operations_async import AzureConfigurationClientImpOperationsMixin
 from .. import models
 
 
-class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin):
+class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin, PipelineClient):
     """Represents an azconfig client
 
 
@@ -27,7 +27,7 @@ class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin):
             self, credentials, base_url=None, config=None, **kwargs):
 
         self._config = config or AzureConfigurationClientImpConfiguration(credentials, **kwargs)
-        self._client = AsyncPipelineClient(base_url=base_url, credentials=credentials, config=self._config, **kwargs)
+        self._client = PipelineClient(base_url=base_url, config=self._config, **kwargs)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
         self.api_version = '1.0'
