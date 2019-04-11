@@ -1,19 +1,11 @@
 from . import _generated
 from .azure_configuration_requests import AzConfigRequestsCredentialsPolicy
-
-
-from .azure_configuration_requests import AzConfigRequestsCredentialsPolicy
-from msrest.pipeline.requests import (
-    PipelineRequestsHTTPSender,
-    RequestsPatchSession
-)
-
-from msrest.pipeline import Request, Pipeline
-from msrest.universal_http.requests import (
-    RequestsHTTPSender,
-)
-
 from .utils import get_endpoint_from_connection_string
+
+from azure.core.pipeline import Pipeline
+from azure.core.pipeline.transport import RequestsTransport
+from azure.core.pipeline.policies import UserAgentPolicy, NetworkTraceLoggingPolicy
+from azure.core.configuration import Configuration
 
 class AzureConfigurationClient(object):
     """Represents an azconfig client
@@ -30,19 +22,24 @@ class AzureConfigurationClient(object):
 
         base_url = "https://" + get_endpoint_from_connection_string(connection_string)
         self._client = _generated.AzureConfigurationClientImp(connection_string, base_url)
-        self._client._client.config.pipeline = self._create_azconfig_pipeline()
+        self._client.pipeline = self._create_azconfig_pipeline()
     
     def _create_azconfig_pipeline(self):
         policies = [
             self._client.config.user_agent_policy,  # UserAgent policy
-            RequestsPatchSession(),         # Support deprecated operation config at the session level
-            self._client.config.http_logger_policy,  # HTTP request/response log
-            AzConfigRequestsCredentialsPolicy(self._client.config)
+            self._client.config.logging_policy,  # HTTP request/response log
+            AzConfigRequestsCredentialsPolicy(self._client.credentials)
         ]
 
+        config = Configuration()
+        config.connection.timeout = self._client.config.connection.timeout
+        config.connection.cert = self._client.config.connection.cert
+        config.connection.verify = self._client.config.connection.verify
+
+
         return Pipeline(
-            policies,
-            PipelineRequestsHTTPSender(RequestsHTTPSender(self._client.config))  # Send HTTP request using requests           
+            RequestsTransport(config),  # Send HTTP request using requests
+            policies
         )
 
     def list_key_values(

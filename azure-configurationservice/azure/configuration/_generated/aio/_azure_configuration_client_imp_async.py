@@ -9,7 +9,7 @@
 # regenerated.
 # --------------------------------------------------------------------------
 
-from msrest.async_client import SDKClientAsync
+from azure.core import AsyncPipelineClient
 from msrest import Serializer, Deserializer
 
 from .._configuration import AzureConfigurationClientImpConfiguration
@@ -17,7 +17,7 @@ from .operations_async import AzureConfigurationClientImpOperationsMixin
 from .. import models
 
 
-class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin, SDKClientAsync):
+class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin, AsyncPipelineClient):
     """Represents an azconfig client
 
     :ivar config: Configuration for client.
@@ -32,8 +32,8 @@ class AzureConfigurationClientImp(AzureConfigurationClientImpOperationsMixin, SD
     def __init__(
             self, credentials, base_url=None):
 
-        self.config = AzureConfigurationClientImpConfiguration(credentials, base_url)
-        super(AzureConfigurationClientImp, self).__init__(self.config)
+        self.config = AzureConfigurationClientImpConfiguration()
+        super(AzureConfigurationClientImp, self).__init__(base_url=base_url,credentials=credentials, config=self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
         self.api_version = '1.0'

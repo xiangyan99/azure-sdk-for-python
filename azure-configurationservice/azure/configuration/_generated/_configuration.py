@@ -8,12 +8,13 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 # --------------------------------------------------------------------------
-from msrestazure import AzureConfiguration
+from azure.core.configuration import Configuration, ConnectionConfiguration
+from azure.core.pipeline import policies
 
 from .version import VERSION
 
 
-class AzureConfigurationClientImpConfiguration(AzureConfiguration):
+class AzureConfigurationClientImpConfiguration(Configuration):
     """Configuration for AzureConfigurationClientImp
     Note that all parameters used to create this instance are saved as instance
     attributes.
@@ -25,19 +26,19 @@ class AzureConfigurationClientImpConfiguration(AzureConfiguration):
     """
 
     def __init__(
-            self, credentials, base_url=None):
+            self, **kwargs):
 
-        if credentials is None:
-            raise ValueError("Parameter 'credentials' must not be None.")
-        if not base_url:
-            base_url = 'http://localhost'
+        super(AzureConfigurationClientImpConfiguration, self).__init__(**kwargs)
+        self._configure(**kwargs)
+        self.user_agent_policy.add_user_agent('azure-configurationservice/{}'.format(VERSION))
+        self.generate_client_request_id = True
+        self.accept_language = None
 
-        super(AzureConfigurationClientImpConfiguration, self).__init__(base_url)
-
-        # Starting Autorest.Python 4.0.64, make connection pool activated by default
-        self.keep_alive = True
-
-        self.add_user_agent('azure-configurationservice/{}'.format(VERSION))
-        self.add_user_agent('Azure-SDK-For-Python')
-
-        self.credentials = credentials
+    def _configure(self, **kwargs):
+        self.connection = ConnectionConfiguration(**kwargs)
+        self.user_agent_policy = policies.UserAgentPolicy(**kwargs)
+        self.headers_policy = policies.HeadersPolicy(**kwargs)
+        self.proxy_policy = policies.ProxyPolicy(**kwargs)
+        self.logging_policy = policies.NetworkTraceLoggingPolicy(**kwargs)
+        self.retry_policy = policies.RetryPolicy(**kwargs)
+        self.redirect_policy = policies.RedirectPolicy(**kwargs)

@@ -1,18 +1,11 @@
 from .._generated.aio import AzureConfigurationClientImp
 from ..azure_configuration_requests import AzConfigRequestsCredentialsPolicy
-
-
-from ..azure_configuration_requests import AzConfigRequestsCredentialsPolicy
-from msrest.pipeline.requests import RequestsPatchSession
-
-from msrest.pipeline import Request, Pipeline
-
-from msrest.universal_http.async_requests import AsyncRequestsHTTPSender
-from msrest.pipeline.async_requests import (
-    AsyncPipelineRequestsHTTPSender
-)
-
 from ..utils import get_endpoint_from_connection_string
+
+from azure.core.pipeline import AsyncPipeline
+from azure.core.pipeline.transport import AsyncioRequestsTransport
+from azure.core.pipeline.policies import UserAgentPolicy, NetworkTraceLoggingPolicy
+from azure.core.configuration import Configuration
 
 class AzureConfigurationClientAsync(object):
     """Represents an azconfig client
@@ -29,21 +22,23 @@ class AzureConfigurationClientAsync(object):
 
         base_url = "https://" + get_endpoint_from_connection_string(connection_string)
         self._client = AzureConfigurationClientImp(connection_string, base_url)
-        self._client._client.config.pipeline = self._create_azconfig_pipeline()
+        self._client.pipeline = self._create_azconfig_pipeline()
     
     def _create_azconfig_pipeline(self):
         policies = [
             self._client.config.user_agent_policy,  # UserAgent policy
-            RequestsPatchSession(),         # Support deprecated operation config at the session level
-            self._client.config.http_logger_policy,  # HTTP request/response log
-            AzConfigRequestsCredentialsPolicy(self._client.config)
+            self._client.config.logging_policy,  # HTTP request/response log
+            AzConfigRequestsCredentialsPolicy(self._client.credentials)
         ]
 
-        return Pipeline(
-            policies,
-            AsyncPipelineRequestsHTTPSender(
-                AsyncRequestsHTTPSender(self._client.config)  # Send HTTP request using requests
-            )
+        config = Configuration()
+        config.connection.timeout = self._client.config.connection.timeout
+        config.connection.cert = self._client.config.connection.cert
+        config.connection.verify = self._client.config.connection.verify
+
+        return AsyncPipeline(
+            AsyncioRequestsTransport(config),  # Send HTTP request using requests
+            policies
         )
 
     def list_key_values(

@@ -8,9 +8,6 @@
 # Changes may cause incorrect behavior and will be lost if the code is
 # regenerated.
 # --------------------------------------------------------------------------
-
-from msrest.pipeline import ClientRawResponse
-from msrestazure.azure_exceptions import CloudError
 from .. import models
 import uuid
 
@@ -43,7 +40,7 @@ class AzureConfigurationClientImpOperationsMixin(object):
         :return: An iterator like instance of KeyValue
         :rtype:
          ~azure.configurationservice.models.KeyValuePaged[~azure.configurationservice.models.KeyValue]
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
+         :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         def prepare_request(next_link=None):
             if not next_link:
@@ -76,14 +73,13 @@ class AzureConfigurationClientImpOperationsMixin(object):
                 header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
             # Construct and send request
-            request = self._client.get(url, query_parameters, header_parameters)
+            request = self.get(url, query_parameters, header_parameters)
             return request
 
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            response = self._client.send(request, stream=False, **operation_config)
-
+            response = self.send(request, stream=False, **operation_config)
             if response.status_code not in [200]:
                 exp = CloudError(response)
                 exp.request_id = response.headers.get('x-ms-request-id')
@@ -118,8 +114,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: KeyValue or ClientRawResponse if raw=true
-        :rtype: ~azure.configurationservice.models.KeyValue or
          ~msrest.pipeline.ClientRawResponse
         :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
@@ -128,12 +122,12 @@ class AzureConfigurationClientImpOperationsMixin(object):
         path_format_arguments = {
             'key': self._serialize.url("key", key, 'str')
         }
-        url = self._client.format_url(url, **path_format_arguments)
+        url = self.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if label is not None:
-            query_parameters['label'] = self._serialize.query("label", label, 'str', skip_quote=True)
+            query_parameters['label'] = self._serialize.query("label", label, 'str')
 
         # Construct headers
         header_parameters = {}
@@ -148,9 +142,8 @@ class AzureConfigurationClientImpOperationsMixin(object):
             header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
         # Construct and send request
-        request = self._client.get(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
-
+        request = self.get(url, query_parameters, header_parameters)
+        response = self.send(request, stream=False, **operation_config)
         if response.status_code not in [200, 304]:
             exp = CloudError(response)
             exp.request_id = response.headers.get('x-ms-request-id')
@@ -163,11 +156,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
             header_dict = {
                 'Last-Modified': 'str',
             }
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            client_raw_response.add_headers(header_dict)
-            return client_raw_response
 
         return deserialized
     get_key_value.metadata = {'url': '/kv/{key}'}
@@ -189,22 +177,18 @@ class AzureConfigurationClientImpOperationsMixin(object):
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: KeyValue or ClientRawResponse if raw=true
-        :rtype: ~azure.configurationservice.models.KeyValue or
-         ~msrest.pipeline.ClientRawResponse
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         # Construct URL
         url = self.create_or_update_key_value.metadata['url']
         path_format_arguments = {
             'key': self._serialize.url("key", key, 'str')
         }
-        url = self._client.format_url(url, **path_format_arguments)
+        url = self.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if label is not None:
-            query_parameters['label'] = self._serialize.query("label", label, 'str', skip_quote=True)
+            query_parameters['label'] = self._serialize.query("label", label, 'str')
 
         # Construct headers
         header_parameters = {}
@@ -221,8 +205,8 @@ class AzureConfigurationClientImpOperationsMixin(object):
         body_content = self._serialize.body(key_value, 'KeyValue')
 
         # Construct and send request
-        request = self._client.put(url, query_parameters, header_parameters, body_content)
-        response = self._client.send(request, stream=False, **operation_config)
+        request = self.put(url, query_parameters, header_parameters, body_content)
+        response = self.send(request, stream=False, **operation_config)
 
         if response.status_code not in [200]:
             exp = CloudError(response)
@@ -232,10 +216,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
         deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('KeyValue', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
 
         return deserialized
     create_or_update_key_value.metadata = {'url': '/kv/{key}'}
@@ -253,22 +233,18 @@ class AzureConfigurationClientImpOperationsMixin(object):
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: KeyValue or ClientRawResponse if raw=true
-        :rtype: ~azure.configurationservice.models.KeyValue or
-         ~msrest.pipeline.ClientRawResponse
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         # Construct URL
         url = self.delete_key_value.metadata['url']
         path_format_arguments = {
             'key': self._serialize.url("key", key, 'str')
         }
-        url = self._client.format_url(url, **path_format_arguments)
+        url = self.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if label is not None:
-            query_parameters['label'] = self._serialize.query("label", label, 'str', skip_quote=True)
+            query_parameters['label'] = self._serialize.query("label", label, 'str')
 
         # Construct headers
         header_parameters = {}
@@ -281,8 +257,8 @@ class AzureConfigurationClientImpOperationsMixin(object):
             header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
         # Construct and send request
-        request = self._client.delete(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
+        request = self.delete(url, query_parameters, header_parameters)
+        response = self.send(request, stream=False, **operation_config)
 
         if response.status_code not in [200, 204]:
             exp = CloudError(response)
@@ -292,10 +268,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
         deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('KeyValue', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
 
         return deserialized
     delete_key_value.metadata = {'url': '/kv/{key}'}
@@ -317,7 +289,7 @@ class AzureConfigurationClientImpOperationsMixin(object):
         :return: An iterator like instance of Key
         :rtype:
          ~azure.configurationservice.models.KeyPaged[~azure.configurationservice.models.Key]
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
+         :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         def prepare_request(next_link=None):
             if not next_link:
@@ -346,13 +318,13 @@ class AzureConfigurationClientImpOperationsMixin(object):
                 header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
             # Construct and send request
-            request = self._client.get(url, query_parameters, header_parameters)
+            request = self.get(url, query_parameters, header_parameters)
             return request
 
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            response = self._client.send(request, stream=False, **operation_config)
+            response = self.send(request, stream=False, **operation_config)
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -389,7 +361,7 @@ class AzureConfigurationClientImpOperationsMixin(object):
         :return: An iterator like instance of Label
         :rtype:
          ~azure.configurationservice.models.LabelPaged[~azure.configurationservice.models.Label]
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
+         :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         def prepare_request(next_link=None):
             if not next_link:
@@ -420,14 +392,13 @@ class AzureConfigurationClientImpOperationsMixin(object):
                 header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
             # Construct and send request
-            request = self._client.get(url, query_parameters, header_parameters)
+            request = self.get(url, query_parameters, header_parameters)
             return request
 
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            response = self._client.send(request, stream=False, **operation_config)
-
+            response = self.send(request, stream=False, **operation_config)
             if response.status_code not in [200]:
                 exp = CloudError(response)
                 exp.request_id = response.headers.get('x-ms-request-id')
@@ -457,17 +428,13 @@ class AzureConfigurationClientImpOperationsMixin(object):
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: KeyValue or ClientRawResponse if raw=true
-        :rtype: ~azure.configurationservice.models.KeyValue or
-         ~msrest.pipeline.ClientRawResponse
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         # Construct URL
         url = self.lock_key_value.metadata['url']
         path_format_arguments = {
             'key': self._serialize.url("key", key, 'str')
         }
-        url = self._client.format_url(url, **path_format_arguments)
+        url = self.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
@@ -485,9 +452,8 @@ class AzureConfigurationClientImpOperationsMixin(object):
             header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
         # Construct and send request
-        request = self._client.put(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
-
+        request = self.put(url, query_parameters, header_parameters)
+        response = self.send(request, stream=False, **operation_config)
         if response.status_code not in [200]:
             exp = CloudError(response)
             exp.request_id = response.headers.get('x-ms-request-id')
@@ -496,10 +462,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
         deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('KeyValue', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
 
         return deserialized
     lock_key_value.metadata = {'url': '/locks/{key}'}
@@ -517,17 +479,13 @@ class AzureConfigurationClientImpOperationsMixin(object):
          deserialized response
         :param operation_config: :ref:`Operation configuration
          overrides<msrest:optionsforoperations>`.
-        :return: KeyValue or ClientRawResponse if raw=true
-        :rtype: ~azure.configurationservice.models.KeyValue or
-         ~msrest.pipeline.ClientRawResponse
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         # Construct URL
         url = self.unlock_key_value.metadata['url']
         path_format_arguments = {
             'key': self._serialize.url("key", key, 'str')
         }
-        url = self._client.format_url(url, **path_format_arguments)
+        url = self.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
@@ -545,9 +503,8 @@ class AzureConfigurationClientImpOperationsMixin(object):
             header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
         # Construct and send request
-        request = self._client.delete(url, query_parameters, header_parameters)
-        response = self._client.send(request, stream=False, **operation_config)
-
+        request = self.delete(url, query_parameters, header_parameters)
+        response = self.send(request, stream=False, **operation_config)
         if response.status_code not in [200]:
             exp = CloudError(response)
             exp.request_id = response.headers.get('x-ms-request-id')
@@ -556,10 +513,6 @@ class AzureConfigurationClientImpOperationsMixin(object):
         deserialized = None
         if response.status_code == 200:
             deserialized = self._deserialize('KeyValue', response)
-
-        if raw:
-            client_raw_response = ClientRawResponse(deserialized, response)
-            return client_raw_response
 
         return deserialized
     unlock_key_value.metadata = {'url': '/locks/{key}'}
@@ -587,7 +540,7 @@ class AzureConfigurationClientImpOperationsMixin(object):
         :return: An iterator like instance of KeyValue
         :rtype:
          ~azure.configurationservice.models.KeyValuePaged[~azure.configurationservice.models.KeyValue]
-        :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
+         :raises: :class:`CloudError<msrestazure.azure_exceptions.CloudError>`
         """
         def prepare_request(next_link=None):
             if not next_link:
@@ -620,19 +573,18 @@ class AzureConfigurationClientImpOperationsMixin(object):
                 header_parameters['accept-language'] = self._serialize.header("self.config.accept_language", self.config.accept_language, 'str')
 
             # Construct and send request
-            request = self._client.get(url, query_parameters, header_parameters)
+            request = self.get(url, query_parameters, header_parameters)
             return request
 
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            response = self._client.send(request, stream=False, **operation_config)
-
+            response = self.send(request, stream=False, **operation_config)
             if response.status_code not in [200]:
                 exp = CloudError(response)
                 exp.request_id = response.headers.get('x-ms-request-id')
                 raise exp
-
+                
             return response
 
         # Deserialize response

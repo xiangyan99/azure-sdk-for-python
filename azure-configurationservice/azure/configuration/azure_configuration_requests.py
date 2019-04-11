@@ -23,7 +23,7 @@
 # IN THE SOFTWARE.
 #
 # --------------------------------------------------------------------------
-from msrest.pipeline import HTTPPolicy
+from azure.core.pipeline.policies import HTTPPolicy
 
 from .utils import parse_connection_string, get_current_utc_time
 import hashlib
@@ -33,14 +33,14 @@ import hmac
 class AzConfigRequestsCredentialsPolicy(HTTPPolicy):
     """Implementation of request-oauthlib except and retry logic.
     """
-    def __init__(self, config):
+    def __init__(self, connection_string):
         super(AzConfigRequestsCredentialsPolicy, self).__init__()
-        self._config = config
+        self._connection_string = connection_string
 
     
     def _signed_request(self, request):
         verb = request.http_request.method.upper()
-        host, credential, secret = parse_connection_string(self._config.credentials)
+        host, credential, secret = parse_connection_string(self._connection_string)
 
         # Get the path and query from url, which looks like https://host/path/query
         query_url = str(request.http_request.url[len(host) + 8:])
