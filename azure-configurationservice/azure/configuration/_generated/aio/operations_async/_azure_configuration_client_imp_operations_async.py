@@ -78,12 +78,8 @@ class AzureConfigurationClientImpOperationsMixin:
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -95,12 +91,8 @@ class AzureConfigurationClientImpOperationsMixin:
         async def internal_paging_async(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = await self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = await self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -168,12 +160,8 @@ class AzureConfigurationClientImpOperationsMixin:
 
         # Construct and send request
         request = self.get(url, query_parameters, header_parameters)
-        try:
-            pipeline_response = await self.pipeline.run(request)
-            response = pipeline_response.http_response.internal_response
-        finally:
-            if not self._config.connection.keep_alive and (not response):
-                self.pipeline._sender.driver.session.close()
+        pipeline_response = await self.pipeline.run(request)
+        response = pipeline_response.http_response.internal_response
 
         if response.status_code not in [200, 304]:
             exp = CloudError(response)
@@ -246,12 +234,8 @@ class AzureConfigurationClientImpOperationsMixin:
 
         # Construct and send request
         request = self.put(url, query_parameters, header_parameters, body_content)
-        try:
-            pipeline_response = await self.pipeline.run(request)
-            response = pipeline_response.http_response.internal_response
-        finally:
-            if not self._config.connection.keep_alive and (not response):
-                self.pipeline._sender.driver.session.close()
+        pipeline_response = await self.pipeline.run(request)
+        response = pipeline_response.http_response.internal_response
 
         if response.status_code not in [200]:
             exp = CloudError(response)
@@ -311,12 +295,8 @@ class AzureConfigurationClientImpOperationsMixin:
 
         # Construct and send request
         request = self.delete(url, query_parameters, header_parameters)
-        try:
-            pipeline_response = await self.pipeline.run(request)
-            response = pipeline_response.http_response.internal_response
-        finally:
-            if not self._config.connection.keep_alive and (not response):
-                self.pipeline._sender.driver.session.close()
+        pipeline_response = await self.pipeline.run(request)
+        response = pipeline_response.http_response.internal_response
 
         if response.status_code not in [200, 204]:
             exp = CloudError(response)
@@ -385,12 +365,8 @@ class AzureConfigurationClientImpOperationsMixin:
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -402,12 +378,8 @@ class AzureConfigurationClientImpOperationsMixin:
         async def internal_paging_async(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = await self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = await self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -481,12 +453,8 @@ class AzureConfigurationClientImpOperationsMixin:
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -498,12 +466,8 @@ class AzureConfigurationClientImpOperationsMixin:
         async def internal_paging_async(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = await self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = await self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -564,12 +528,8 @@ class AzureConfigurationClientImpOperationsMixin:
 
         # Construct and send request
         request = self.put(url, query_parameters, header_parameters)
-        try:
-            pipeline_response = await self.pipeline.run(request)
-            response = pipeline_response.http_response.internal_response
-        finally:
-            if not self._config.connection.keep_alive and (not response):
-                self.pipeline._sender.driver.session.close()
+        pipeline_response = await self.pipeline.run(request)
+        response = pipeline_response.http_response.internal_response
 
         if response.status_code not in [200]:
             exp = CloudError(response)
@@ -629,12 +589,8 @@ class AzureConfigurationClientImpOperationsMixin:
 
         # Construct and send request
         request = self.delete(url, query_parameters, header_parameters)
-        try:
-            pipeline_response = await self.pipeline.run(request)
-            response = pipeline_response.http_response.internal_response
-        finally:
-            if not self._config.connection.keep_alive and (not response):
-                self.pipeline._sender.driver.session.close()
+        pipeline_response = await self.pipeline.run(request)
+        response = pipeline_response.http_response.internal_response
 
         if response.status_code not in [200]:
             exp = CloudError(response)
@@ -714,12 +670,8 @@ class AzureConfigurationClientImpOperationsMixin:
         def internal_paging(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)
@@ -731,12 +683,8 @@ class AzureConfigurationClientImpOperationsMixin:
         async def internal_paging_async(next_link=None):
             request = prepare_request(next_link)
 
-            try:
-                pipeline_response = await self.pipeline.run(request)
-                response = pipeline_response.http_response.internal_response
-            finally:
-                if not self._config.connection.keep_alive and (not response):
-                    self.pipeline._sender.driver.session.close()
+            pipeline_response = await self.pipeline.run(request)
+            response = pipeline_response.http_response.internal_response
 
             if response.status_code not in [200]:
                 exp = CloudError(response)

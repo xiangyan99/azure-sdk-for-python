@@ -8,7 +8,7 @@
 from azure.core import PipelineClient
 from msrest import Serializer, Deserializer
 
-from .._configuration import AzureConfigurationClientImpConfiguration
+from ._configuration_async import AzureConfigurationClientImpConfiguration
 from .operations_async import AzureConfigurationClientImpOperationsMixin
 from .. import models
 
