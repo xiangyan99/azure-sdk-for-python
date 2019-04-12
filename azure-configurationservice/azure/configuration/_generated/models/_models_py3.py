@@ -16,29 +16,7 @@ class CloudError(Model):
     }
 
 
-class Key(Model):
-    """Key.
-
-    All required parameters must be populated in order to send to Azure.
-
-    :param name: Required.
-    :type name: str
-    """
-
-    _validation = {
-        'name': {'required': True},
-    }
-
-    _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-    }
-
-    def __init__(self, *, name: str, **kwargs) -> None:
-        super(Key, self).__init__(**kwargs)
-        self.name = name
-
-
-class KeyValue(Model):
+class ConfigurationSetting(Model):
     """A configuration value.
 
     Variables are only populated by the server, and will be ignored when
@@ -80,7 +58,7 @@ class KeyValue(Model):
     }
 
     def __init__(self, *, key: str=None, label: str=None, content_type: str=None, value: str=None, tags=None, **kwargs) -> None:
-        super(KeyValue, self).__init__(**kwargs)
+        super(ConfigurationSetting, self).__init__(**kwargs)
         self.etag = None
         self.key = key
         self.label = label
@@ -89,6 +67,28 @@ class KeyValue(Model):
         self.last_modified = None
         self.locked = None
         self.tags = tags
+
+
+class Key(Model):
+    """Key.
+
+    All required parameters must be populated in order to send to Azure.
+
+    :param name: Required.
+    :type name: str
+    """
+
+    _validation = {
+        'name': {'required': True},
+    }
+
+    _attribute_map = {
+        'name': {'key': 'name', 'type': 'str'},
+    }
+
+    def __init__(self, *, name: str, **kwargs) -> None:
+        super(Key, self).__init__(**kwargs)
+        self.name = name
 
 
 class Label(Model):

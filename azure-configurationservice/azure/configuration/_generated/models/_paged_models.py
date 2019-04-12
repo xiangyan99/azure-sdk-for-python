@@ -8,19 +8,19 @@
 from msrest.paging import Paged
 
 
-class KeyValuePaged(Paged):
+class ConfigurationSettingPaged(Paged):
     """
-    A paging container for iterating over a list of :class:`KeyValue <azconfig.models.KeyValue>` object
+    A paging container for iterating over a list of :class:`ConfigurationSetting <azconfig.models.ConfigurationSetting>` object
     """
 
     _attribute_map = {
         'next_link': {'key': '@nextLink', 'type': 'str'},
-        'current_page': {'key': 'items', 'type': '[KeyValue]'}
+        'current_page': {'key': 'items', 'type': '[ConfigurationSetting]'}
     }
 
     def __init__(self, *args, **kwargs):
 
-        super(KeyValuePaged, self).__init__(*args, **kwargs)
+        super(ConfigurationSettingPaged, self).__init__(*args, **kwargs)
 class KeyPaged(Paged):
     """
     A paging container for iterating over a list of :class:`Key <azconfig.models.Key>` object

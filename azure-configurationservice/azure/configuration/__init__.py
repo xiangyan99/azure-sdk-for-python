@@ -14,7 +14,7 @@ from ._generated.models import *
 
 __all__ = [
     'AzureConfigurationClient',
-    'KeyValue'
+    'ConfigurationSetting'
     ]
 
 

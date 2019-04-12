@@ -6,22 +6,22 @@
 # --------------------------------------------------------------------------
 
 try:
+    from ._models_py3 import ConfigurationSetting
     from ._models_py3 import Key
-    from ._models_py3 import KeyValue
     from ._models_py3 import Label
 except (SyntaxError, ImportError):
+    from ._models import ConfigurationSetting
     from ._models import Key
-    from ._models import KeyValue
     from ._models import Label
+from ._paged_models import ConfigurationSettingPaged
 from ._paged_models import KeyPaged
-from ._paged_models import KeyValuePaged
 from ._paged_models import LabelPaged
 
 __all__ = [
+    'ConfigurationSetting',
     'Key',
-    'KeyValue',
     'Label',
-    'KeyValuePaged',
+    'ConfigurationSettingPaged',
     'KeyPaged',
     'LabelPaged',
 ]
